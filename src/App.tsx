@@ -210,6 +210,7 @@ export function App() {
         currentPageNumber={activePageNumber}
         totalPages={allPages.length}
         onSelectChapter={handleSelectChapter}
+        onSelectPage={setActivePageNumber}
         languageMode={languageMode}
         onLanguageChange={setLanguageMode}
         onOpenCheatSheet={() => setShowCheatSheet(true)}

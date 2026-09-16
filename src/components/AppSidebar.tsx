@@ -16,6 +16,7 @@ import {
 import { LanguageMode } from '../types';
 import { courseUnits } from '../data/courseUnits';
 import { chaptersOverview } from '../data/chaptersData';
+import { allPages } from '../data/pagesData';
 import { getPlaybackSpeed, setPlaybackSpeed } from '../utils/speech';
 import { moduleScenes } from '../utils/moduleAssets';
 
@@ -26,6 +27,7 @@ interface AppSidebarProps {
   currentPageNumber: number;
   totalPages: number;
   onSelectChapter: (chapterNum: number) => void;
+  onSelectPage?: (pageNumber: number) => void;
   languageMode: LanguageMode;
   onLanguageChange: (mode: LanguageMode) => void;
   onOpenCheatSheet: () => void;
@@ -46,6 +48,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   currentPageNumber,
   totalPages,
   onSelectChapter,
+  onSelectPage,
   languageMode,
   onLanguageChange,
   onOpenCheatSheet,
@@ -220,70 +223,56 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     {unit.chapterNumbers.map((chNum) => {
                       const chData = chaptersOverview.find((c) => c.number === chNum);
                       if (!chData) return null;
-                      const isActive = chNum === currentChapterNumber;
-                      const scene = moduleScenes[chNum];
-
-                      return (
-                        <button
-                          key={chNum}
-                          type="button"
-                          onClick={() => {
-                            onSelectChapter(chNum);
-                            if (activeView !== 'course') onSelectView('course');
-                            if (window.innerWidth < 1024) onClose();
-                          }}
-                          className={`w-full px-2 py-1.5 rounded-xl text-left text-xs transition flex items-center justify-between gap-2.5 cursor-pointer ${
-                            isActive && activeView === 'course'
-                              ? 'bg-slate-900 text-white font-bold shadow-2xs'
-                              : 'text-slate-700 hover:bg-slate-100'
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 min-w-0 truncate">
-                            {/* Chapter Thumbnail Preview */}
-                            {scene?.imageSrc ? (
-                              <img
-                                src={scene.imageSrc}
-                                alt={`K${chNum}`}
-                                referrerPolicy="no-referrer"
-                                onError={(e) => {
-                                  const filename = scene.imageSrc.split('/').pop();
-                                  if (filename) {
-                                    const fallback = `/images/${filename}`;
-                                    if (e.currentTarget.src !== fallback && !e.currentTarget.src.endsWith(fallback)) {
-                                      e.currentTarget.src = fallback;
+                      const chapterPages = allPages.filter((page) => page.chapterNumber === chNum);
+                      return chapterPages.map((page) => {
+                        const isActive = page.pageNumber === currentPageNumber;
+                        const scene = moduleScenes[chNum];
+                        return (
+                          <button
+                            key={page.pageNumber}
+                            type="button"
+                            onClick={() => {
+                              if (onSelectPage) onSelectPage(page.pageNumber);
+                              else onSelectChapter(chNum);
+                              if (activeView !== 'course') onSelectView('course');
+                              if (window.innerWidth < 1024) onClose();
+                            }}
+                            className={`w-full px-2 py-1.5 rounded-xl text-left text-xs transition flex items-center justify-between gap-2.5 cursor-pointer ${
+                              isActive && activeView === 'course'
+                                ? 'bg-slate-900 text-white font-bold shadow-2xs'
+                                : 'text-slate-700 hover:bg-slate-100'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 min-w-0 truncate">
+                              {scene?.imageSrc ? (
+                                <img
+                                  src={scene.imageSrc}
+                                  alt={`K${chNum}`}
+                                  referrerPolicy="no-referrer"
+                                  onError={(e) => {
+                                    const filename = scene.imageSrc.split('/').pop();
+                                    if (filename) {
+                                      const fallback = `/images/${filename}`;
+                                      if (e.currentTarget.src !== fallback && !e.currentTarget.src.endsWith(fallback)) e.currentTarget.src = fallback;
                                     }
-                                  }
-                                }}
-                                className="w-11 h-11 rounded-xl object-cover shrink-0 border border-white/90"
-                              />
-                            ) : (
-                              <span
-                                className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold shrink-0 ${
-                                  isActive && activeView === 'course'
-                                    ? 'bg-white/20 text-white'
-                                    : 'bg-slate-100 text-slate-700'
-                                }`}
-                              >
-                                K{chNum < 10 ? `0${chNum}` : chNum}
-                              </span>
-                            )}
-                            <div className="truncate">
-                              <span className="truncate block font-semibold leading-tight">
-                                {chData.titleDe.replace(/^Kapitel \d+ – /, '')}
-                              </span>
-                              <span
-                                className={`text-[10px] font-mono block ${
-                                  isActive && activeView === 'course'
-                                    ? 'text-slate-300'
-                                    : 'text-slate-400'
-                                }`}
-                              >
-                                K{chNum < 10 ? `0${chNum}` : chNum} · S. {chData.startPage}
-                              </span>
+                                  }}
+                                  className="w-11 h-11 rounded-xl object-cover shrink-0 border border-white/90"
+                                />
+                              ) : (
+                                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold shrink-0 ${isActive && activeView === 'course' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}`}>
+                                  S.{page.pageNumber}
+                                </span>
+                              )}
+                              <div className="truncate">
+                                <span className="truncate block font-semibold leading-tight">{page.pageTitleDe}</span>
+                                <span className={`text-[10px] font-mono block ${isActive && activeView === 'course' ? 'text-slate-300' : 'text-slate-400'}`}>
+                                  K{chNum < 10 ? `0${chNum}` : chNum} · S. {page.pageNumber}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </button>
-                      );
+                          </button>
+                        );
+                      });
                     })}
                   </div>
                 )}

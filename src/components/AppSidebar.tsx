@@ -5,9 +5,7 @@ import {
   ChevronRight,
   Languages,
   PanelLeftClose,
-  BookOpen,
   Volume2,
-  BookMarked,
   Eye,
   EyeOff,
   Gauge,
@@ -133,38 +131,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           >
             <PanelLeftClose className="w-5 h-5" />
           </button>
-        </div>
-
-        {/* Primary View Switcher Tabs (Course vs Stories) */}
-        <div className="p-3.5 border-b border-slate-100 bg-white space-y-1.5">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-1">
-            Bereich
-          </div>
-          <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-xl">
-            <a
-              href="/kurs"
-              className={`py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
-                activeView === 'course'
-                  ? 'bg-white text-slate-950 shadow-2xs border border-slate-200/80'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5 text-slate-700" />
-              <span>A1 Lehrbuch</span>
-            </a>
-
-            <a
-              href="/geschichten"
-              className={`py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
-                activeView === 'stories'
-                  ? 'bg-slate-900 text-white shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-950'
-              }`}
-            >
-              <BookMarked className={`w-3.5 h-3.5 ${activeView === 'stories' ? 'text-white' : 'text-slate-600'}`} />
-              <span>Geschichten</span>
-            </a>
-          </div>
         </div>
 
         {/* Course Units Accordion Navigation */}

@@ -4,6 +4,7 @@ import {
   PanelLeftOpen,
   BookOpen,
   BookMarked,
+  Library,
 } from 'lucide-react';
 import { CoursePage, LanguageMode } from '../types';
 import { getUnitForChapter, getUnitTitle } from '../data/courseUnits';
@@ -119,6 +120,15 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
             <BookMarked className={`w-3.5 h-3.5 ${activeView === 'stories' ? 'text-white' : 'text-slate-700'}`} />
             <span className="hidden sm:inline">Hörgeschichten</span>
             <span className="sm:hidden">Audio</span>
+          </a>
+
+          <a
+            href="/wortschatz"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition cursor-pointer"
+            title="Wortschatz öffnen"
+          >
+            <Library className="w-3.5 h-3.5 text-slate-700" />
+            <span className="hidden sm:inline">Wortschatz</span>
           </a>
         </div>
       </div>

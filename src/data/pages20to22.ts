@@ -27,7 +27,7 @@ export const pages20to22: CoursePage[] = [
         { id: 'b20-1', prefixDe: 'Der Zug fährt um 14 Uhr von ', correctAnswer: 'Gleis drei', suffixDe: '.', hint: 'platform' }, { id: 'b20-2', prefixDe: 'Ich kaufe ein ', correctAnswer: 'Ticket', suffixDe: '.', hint: 'travel document' }, { id: 'b20-3', prefixDe: 'Wann ', correctAnswer: 'kommt', suffixDe: ' der Zug an?', hint: 'arrive' },
       ] },
       { id: 'ex20-speak', titleDe: 'Sprechen: Meine Reise', titleAr: 'تحدث: رحلتي', titleEn: 'Speaking: My trip', titleFr: 'Expression orale : Mon voyage', type: 'answering', instructionDe: 'Antworte mit ganzen Sätzen.', instructionAr: 'أجب بجمل كاملة.', instructionEn: 'Answer in complete sentences.', instructionFr: 'Répondez avec des phrases complètes.', answeringQuestions: [
-        { qDe: 'Wohin möchtest du reisen?', qAr: 'إلى أين تريد السفر؟', qEn: 'Where would you like to travel?', qFr: 'Où voudrais-tu voyager ?', sampleAnswerDe: 'Ich möchte nach Berlin reisen.' }, { qDe: 'Wie fährst du?', qAr: 'بماذا تسافر؟', qEn: 'How do you travel?', qFr: 'Comment voyages-tu ?', sampleAnswerDe: 'Ich fahre mit dem Zug.' },
+        { questionDe: 'Wohin möchtest du reisen?', questionAr: 'إلى أين تريد السفر؟', questionEn: 'Where would you like to travel?', questionFr: 'Où voudrais-tu voyager ?', sampleAnswerDe: 'Ich möchte nach Berlin reisen.' }, { questionDe: 'Wie fährst du?', questionAr: 'بماذا تسافر؟', questionEn: 'How do you travel?', questionFr: 'Comment voyages-tu ?', sampleAnswerDe: 'Ich fahre mit dem Zug.' },
       ] },
     ],
   },
@@ -82,7 +82,7 @@ export const pages20to22: CoursePage[] = [
         { id: 'b22-1', prefixDe: 'Ich ', correctAnswer: 'möchte', suffixDe: ' am Sonntag essen gehen.', hint: 'would like' }, { id: 'b22-2', prefixDe: 'Leider ', correctAnswer: 'kann', suffixDe: ' ich heute nicht.', hint: 'can' }, { id: 'b22-3', prefixDe: 'Wir ', correctAnswer: 'können', suffixDe: ' uns um sechs treffen.', hint: 'can, plural' },
       ] },
       { id: 'ex22-speak', titleDe: 'Sprechen: Eine Einladung', titleAr: 'تحدث: دعوة', titleEn: 'Speaking: An invitation', titleFr: 'Expression orale : Une invitation', type: 'answering', instructionDe: 'Sprich mit einem Partner.', instructionAr: 'تحدث مع شريك.', instructionEn: 'Speak with a partner.', instructionFr: 'Parlez avec un partenaire.', answeringQuestions: [
-        { qDe: 'Wen möchtest du einladen?', qAr: 'من تريد دعوته؟', qEn: 'Who would you like to invite?', qFr: 'Qui voudrais-tu inviter ?', sampleAnswerDe: 'Ich möchte meine Freundin einladen.' }, { qDe: 'Wann und wo trefft ihr euch?', qAr: 'متى وأين تلتقون؟', qEn: 'When and where will you meet?', qFr: 'Quand et où vous retrouvez-vous ?', sampleAnswerDe: 'Wir treffen uns am Samstag im Café.' },
+        { questionDe: 'Wen möchtest du einladen?', questionAr: 'من تريد دعوته؟', questionEn: 'Who would you like to invite?', questionFr: 'Qui voudrais-tu inviter ?', sampleAnswerDe: 'Ich möchte meine Freundin einladen.' }, { questionDe: 'Wann und wo trefft ihr euch?', questionAr: 'متى وأين تلتقون؟', questionEn: 'When and where will you meet?', questionFr: 'Quand et où vous retrouvez-vous ?', sampleAnswerDe: 'Wir treffen uns am Samstag im Café.' },
       ] },
     ],
   },

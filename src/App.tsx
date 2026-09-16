@@ -20,6 +20,7 @@ import { AudioSettingsModal } from './components/AudioSettingsModal';
 import { StoriesPage } from './components/StoriesPage';
 import { LandingPage } from './components/LandingPage';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
+import { VocabularyPage } from './components/VocabularyPage';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
 
 export function App() {
@@ -180,6 +181,10 @@ export function App() {
 
   if (window.location.pathname === '/') {
     return <LandingPage />;
+  }
+
+  if (window.location.pathname.startsWith('/wortschatz')) {
+    return <VocabularyPage />;
   }
 
   if (activeView === 'stories') {

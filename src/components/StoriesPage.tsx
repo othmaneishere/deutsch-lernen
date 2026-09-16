@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, BookMarked, Volume2 } from 'lucide-react';
+import { BookOpen, BookMarked, Volume2, Library } from 'lucide-react';
 import { LanguageMode } from '../types';
 import { GermanStoriesLounge } from './GermanStoriesLounge';
 
@@ -34,6 +34,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({
             <BookMarked className="h-4 w-4" />
             <span>Geschichten</span>
           </a>
+          <a href="/wortschatz" className="inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950"><Library className="h-4 w-4" /><span className="hidden sm:inline">Wortschatz</span></a>
           <button type="button" onClick={onOpenAudioSettings} className="rounded-xl border border-slate-200 p-2.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Audio-Einstellungen öffnen" title="Audio-Einstellungen">
             <Volume2 className="h-4 w-4" />
           </button>

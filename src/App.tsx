@@ -17,7 +17,7 @@ import { CheatSheetModal } from './components/CheatSheetModal';
 import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { GlobalAudioPlayerBar } from './components/GlobalAudioPlayerBar';
 import { AudioSettingsModal } from './components/AudioSettingsModal';
-import { GermanStoriesLounge } from './components/GermanStoriesLounge';
+import { StoriesPage } from './components/StoriesPage';
 import { GermanStoriesSection } from './components/GermanStoriesSection';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
@@ -178,6 +178,29 @@ export function App() {
 
   const shouldShowExercises = sectionFilter === 'all' || sectionFilter === 'exercises';
 
+  if (activeView === 'stories') {
+    return (
+      <>
+        <StoriesPage
+          languageMode={languageMode}
+          onOpenAudioSettings={() => setShowAudioSettings(true)}
+          onOpenLevelComingSoon={(lvl) => setComingSoonLevel(lvl)}
+        />
+        <AudioSettingsModal
+          isOpen={showAudioSettings}
+          onClose={() => setShowAudioSettings(false)}
+          languageMode={languageMode}
+        />
+        <A2ComingSoonModal
+          isOpen={comingSoonLevel !== null}
+          onClose={() => setComingSoonLevel(null)}
+          languageMode={languageMode}
+          levelRequested={comingSoonLevel || 'A2'}
+        />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-slate-200 selection:text-slate-950 flex flex-row font-reading">
       {/* Collapsible Left Sidebar with All Settings */}
@@ -216,21 +239,7 @@ export function App() {
         />
 
         {/* View Switch Rendering */}
-        {activeView === 'stories' ? (
-          /* Dedicated German Stories Lounge View */
-          <main
-            className={`flex-1 w-full mx-auto px-4 sm:px-8 lg:px-12 py-8 transition-all duration-300 ${
-              isSidebarOpen ? 'max-w-6xl' : 'max-w-7xl'
-            }`}
-          >
-            <GermanStoriesLounge
-              languageMode={languageMode}
-              onSwitchToCourse={() => setActiveView('course')}
-              onOpenAudioSettings={() => setShowAudioSettings(true)}
-              onOpenLevelComingSoon={(lvl) => setComingSoonLevel(lvl)}
-            />
-          </main>
-        ) : (
+        {
           /* Focused Course Workspace View - Wider when sidebar is closed */
           <main
             className={`flex-1 w-full mx-auto px-4 sm:px-8 lg:px-12 py-8 space-y-8 transition-all duration-300 ${
@@ -359,7 +368,7 @@ export function App() {
               languageMode={languageMode}
             />
           </main>
-        )}
+        }
       </div>
 
       {/* Global Audio Control Bar */}

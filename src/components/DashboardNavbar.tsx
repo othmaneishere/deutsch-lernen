@@ -109,9 +109,8 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       {/* Right: Primary Views Switcher (A1 Lehrbuch vs Hörgeschichten) */}
       <div className="flex items-center gap-2 shrink-0">
         <div className="inline-flex items-center p-1 rounded-2xl bg-slate-100 border border-slate-200/80 shadow-2xs">
-          <button
-            type="button"
-            onClick={() => onSelectView('course')}
+          <a
+            href="/"
             aria-current={activeView === 'course' ? 'page' : undefined}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
               activeView === 'course'
@@ -122,11 +121,10 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
             <BookOpen className="w-3.5 h-3.5 text-slate-700" />
             <span className="hidden sm:inline">A1 Lehrbuch</span>
             <span className="sm:hidden">Kurs</span>
-          </button>
+          </a>
 
-          <button
-            type="button"
-            onClick={() => onSelectView('stories')}
+          <a
+            href="/geschichten"
             aria-current={activeView === 'stories' ? 'page' : undefined}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
               activeView === 'stories'
@@ -137,7 +135,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
             <BookMarked className={`w-3.5 h-3.5 ${activeView === 'stories' ? 'text-white' : 'text-slate-700'}`} />
             <span className="hidden sm:inline">Hörgeschichten</span>
             <span className="sm:hidden">Audio</span>
-          </button>
+          </a>
         </div>
       </div>
     </header>

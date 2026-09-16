@@ -186,12 +186,8 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             Bereich
           </div>
           <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-xl">
-            <button
-              type="button"
-              onClick={() => {
-                onSelectView('course');
-                if (window.innerWidth < 1024) onClose();
-              }}
+            <a
+              href="/"
               className={`py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeView === 'course'
                   ? 'bg-white text-slate-950 shadow-2xs border border-slate-200/80'
@@ -200,14 +196,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             >
               <BookOpen className="w-3.5 h-3.5 text-slate-700" />
               <span>A1 Lehrbuch</span>
-            </button>
+            </a>
 
-            <button
-              type="button"
-              onClick={() => {
-                onSelectView('stories');
-                if (window.innerWidth < 1024) onClose();
-              }}
+            <a
+              href="/geschichten"
               className={`py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeView === 'stories'
                   ? 'bg-slate-900 text-white shadow-2xs'
@@ -216,7 +208,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             >
               <BookMarked className={`w-3.5 h-3.5 ${activeView === 'stories' ? 'text-white' : 'text-slate-600'}`} />
               <span>Geschichten</span>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -346,23 +338,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           })}
         </div>
 
-        {/* SETTINGS SECTION (Moved from Navbar per request) */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 space-y-3.5">
-          <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500">
-            <span className="flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-slate-600" />
-              <span>Einstellungen & Optionen</span>
-            </span>
+        {/* SETTINGS SECTION: compact icon-only controls */}
+        <div className="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Optionen</span>
+            <Sliders className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
           </div>
 
           {/* 1. Language Mode Selector */}
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-medium text-slate-600">
-              <span>Übersetzungssprache</span>
-              <span className="font-mono text-[10px] font-bold text-slate-400">
-                {languageMode.toUpperCase()}
-              </span>
-            </div>
             <div className="grid grid-cols-4 gap-1 p-1 bg-white rounded-xl border border-slate-200/80">
               {languageOptions.map((opt) => {
                 const isSelected = languageMode === opt.id;
@@ -378,109 +362,55 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     }`}
                     title={opt.label}
                   >
-                    <span className="text-xs">{opt.flag}</span>
-                    <span className="text-[10px] leading-tight font-black">{opt.short}</span>
+                    <span className="text-base leading-none">{opt.flag}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* 2. Translations Toggle (Übersetzungen) */}
+          {/* 2. Translations Toggle */}
           {onToggleTranslations && (
-            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 text-xs">
-              <div className="flex items-center gap-2">
-                {showTranslations ? (
-                  <Eye className="w-4 h-4 text-slate-600" />
-                ) : (
-                  <EyeOff className="w-4 h-4 text-slate-400" />
-                )}
-                <div>
-                  <span className="font-bold text-slate-800 block leading-tight">Übersetzungen</span>
-                  <span className="text-[10px] text-slate-500">
-                    {showTranslations ? 'Im Kurs sichtbar' : 'Ausgeblendet (Testen)'}
-                  </span>
-                </div>
-              </div>
+            <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={onToggleTranslations}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                aria-label={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
+                title={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
+                className={`flex-1 h-10 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center transition cursor-pointer ${
                   showTranslations
-                    ? 'bg-slate-900 text-white'
-                    : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                    ? 'text-slate-900 hover:bg-slate-100'
+                    : 'text-slate-400 hover:bg-slate-100'
                 }`}
               >
-                {showTranslations ? 'An' : 'Aus'}
+                {showTranslations ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
               </button>
+              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-10 flex-1 rounded-xl bg-white border border-slate-200/80 text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title="Sprechtempo ändern"><Gauge className="mx-auto h-4 w-4" /></button>
             </div>
           )}
 
-          {/* 3. Speech Speed (1.0x / 0.8x) */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-medium text-slate-600">
-              <span className="flex items-center gap-1.5">
-                <Gauge className="w-3.5 h-3.5 text-slate-600" />
-                <span>Sprechtempo</span>
-              </span>
-              <span className="font-mono text-xs font-bold text-slate-800">
-                {audioSpeed.toFixed(1)}x
-              </span>
-            </div>
-            <div className="grid grid-cols-3 gap-1 p-1 bg-white rounded-xl border border-slate-200/80 text-xs">
-              {speedOptions.map((spd) => {
-                const isSelected = Math.abs(audioSpeed - spd) < 0.05;
-                return (
-                  <button
-                    key={spd}
-                    type="button"
-                    onClick={() => {
-                      setPlaybackSpeed(spd);
-                      if (onSpeedChange) onSpeedChange(spd);
-                    }}
-                    className={`py-1 rounded-lg font-mono font-bold transition cursor-pointer ${
-                      isSelected
-                        ? 'bg-slate-900 text-white shadow-2xs'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                    }`}
-                  >
-                    {spd}x
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* 4. Stimme & Audio-Optionen Modal Trigger */}
+          {/* 3. Audio options */}
           {onOpenAudioSettings && (
             <button
               type="button"
               onClick={onOpenAudioSettings}
-              className="w-full py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-between cursor-pointer shadow-2xs"
+              aria-label="Audio-Optionen öffnen"
+              title="Audio-Optionen"
+              className="w-full h-10 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
             >
-              <div className="flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-slate-700" />
-                <span>Stimme (Audio-Optionen)</span>
-              </div>
-              <span className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono font-bold">
-                Wählen
-              </span>
+              <Volume2 className="w-4 h-4 text-slate-700" />
             </button>
           )}
 
-          {/* 5. Grammatik Cheat Sheet Trigger */}
+          {/* 4. Grammar cheat sheet */}
           <button
             type="button"
             onClick={onOpenCheatSheet}
-            className="w-full py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-between cursor-pointer shadow-2xs"
+            aria-label="A1 Grammatikübersicht öffnen"
+            title="A1 Grammatikübersicht"
+            className="w-full h-10 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
           >
-            <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-slate-700" />
-              <span>A1 Grammatik-Übersicht</span>
-            </div>
-            <span className="text-[10px] font-mono font-bold bg-slate-100 px-2 py-0.5 rounded-md text-slate-700">
-              Öffnen
-            </span>
+            <FileText className="w-4 h-4 text-slate-700" />
           </button>
 
           {/* Course Progress Indicator */}

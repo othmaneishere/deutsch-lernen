@@ -94,7 +94,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="flex items-center gap-2 shrink-0">
         <div className="inline-flex items-center p-1 rounded-2xl bg-slate-100 border border-slate-200/80 shadow-2xs">
           <a
-            href="/"
+            href="/kurs"
             aria-current={activeView === 'course' ? 'page' : undefined}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
               activeView === 'course'

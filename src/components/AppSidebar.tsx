@@ -142,7 +142,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           </div>
           <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-xl">
             <a
-              href="/"
+              href="/kurs"
               className={`py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeView === 'course'
                   ? 'bg-white text-slate-950 shadow-2xs border border-slate-200/80'

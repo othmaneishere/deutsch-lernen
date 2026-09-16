@@ -17,7 +17,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({
   <div className="stories-page min-h-screen bg-[#f7f8fa] text-slate-900 font-reading">
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
-        <a href="/" className="flex items-center gap-3" aria-label="Zum A1 Lehrbuch">
+          <a href="/kurs" className="flex items-center gap-3" aria-label="Zum A1 Lehrbuch">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">DE</span>
           <span className="hidden sm:block">
             <span className="block text-sm font-extrabold tracking-tight">Deutsch Lernen</span>
@@ -44,7 +44,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({
     <main className="mx-auto max-w-7xl px-4 py-6 sm:px-8 lg:px-12">
       <GermanStoriesLounge
         languageMode={languageMode}
-        onSwitchToCourse={() => { window.location.href = '/'; }}
+        onSwitchToCourse={() => { window.location.href = '/kurs'; }}
         onOpenAudioSettings={onOpenAudioSettings}
         onOpenLevelComingSoon={onOpenLevelComingSoon}
       />

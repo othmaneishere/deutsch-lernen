@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/kurs", "destination": "/index.html" },
+    { "source": "/kurs/:path*", "destination": "/index.html" },
     { "source": "/geschichten", "destination": "/index.html" },
     { "source": "/geschichten/:path*", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }

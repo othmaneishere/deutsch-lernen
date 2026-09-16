@@ -18,6 +18,7 @@ import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { GlobalAudioPlayerBar } from './components/GlobalAudioPlayerBar';
 import { AudioSettingsModal } from './components/AudioSettingsModal';
 import { StoriesPage } from './components/StoriesPage';
+import { LandingPage } from './components/LandingPage';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
 
@@ -35,7 +36,7 @@ export function App() {
 
   const setActiveView = (view: 'course' | 'stories') => {
     setActiveViewState(view);
-    window.history.pushState({}, '', view === 'stories' ? '/geschichten' : '/');
+    window.history.pushState({}, '', view === 'stories' ? '/geschichten' : '/kurs');
   };
 
   // Saved Language Mode: 'none' (DE only), 'ar', 'en', 'fr'
@@ -176,6 +177,10 @@ export function App() {
   };
 
   const shouldShowExercises = sectionFilter === 'all' || sectionFilter === 'exercises';
+
+  if (window.location.pathname === '/') {
+    return <LandingPage />;
+  }
 
   if (activeView === 'stories') {
     return (

@@ -14,7 +14,7 @@ export const StoriesPage: React.FC<StoriesPageProps> = ({
   onOpenAudioSettings,
   onOpenLevelComingSoon,
 }) => (
-  <div className="min-h-screen bg-[#f7f8fa] text-slate-900 font-reading">
+  <div className="stories-page min-h-screen bg-[#f7f8fa] text-slate-900 font-reading">
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <a href="/" className="flex items-center gap-3" aria-label="Zum A1 Lehrbuch">

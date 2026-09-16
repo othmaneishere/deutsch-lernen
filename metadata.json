@@ -1,0 +1,6 @@
+{
+  "name": "Deutsch Lernen",
+  "description": "A light and simple German learning applet with multi-language support (English, French, Arabic, and German-only mode) covering A1 chapters with interactive exercises and audio pronunciation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

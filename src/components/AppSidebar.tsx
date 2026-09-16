@@ -339,7 +339,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         </div>
 
         {/* SETTINGS SECTION: compact icon-only controls */}
-        <div className="px-2.5 py-2 border-t border-slate-200 bg-slate-50 space-y-2">
+        <div className="px-2 py-1.5 border-t border-slate-200 bg-slate-50 space-y-1.5">
           <div className="flex items-center justify-between px-1">
             <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">Optionen</span>
             <Sliders className="w-3 h-3 text-slate-300" aria-hidden="true" />
@@ -347,7 +347,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
           {/* 1. Language Mode Selector */}
           <div className="space-y-1">
-            <div className="grid grid-cols-4 gap-1 p-1 bg-white/80 rounded-xl border border-slate-200/80">
+            <div className="grid grid-cols-4 gap-0.5">
               {languageOptions.map((opt) => {
                 const isSelected = languageMode === opt.id;
                 return (
@@ -355,7 +355,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     key={opt.id}
                     type="button"
                     onClick={() => onLanguageChange(opt.id)}
-                    className={`h-7 rounded-lg text-xs font-bold flex items-center justify-center transition-all cursor-pointer ${
+                    className={`h-7 rounded-md text-xs font-bold flex items-center justify-center transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-slate-900 text-white shadow-2xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -371,13 +371,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
           {/* 2. Translations Toggle */}
           {onToggleTranslations && (
-            <div className="grid grid-cols-4 gap-1 p-1 bg-white/80 rounded-xl border border-slate-200/80">
+            <div className="grid grid-cols-4 gap-0.5">
               <button
                 type="button"
                 onClick={onToggleTranslations}
                 aria-label={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
                 title={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
-                className={`h-7 rounded-lg flex items-center justify-center transition cursor-pointer ${
+                className={`h-7 rounded-md flex items-center justify-center transition cursor-pointer ${
                   showTranslations
                     ? 'text-slate-900 hover:bg-slate-100'
                     : 'text-slate-400 hover:bg-slate-100'
@@ -385,7 +385,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               >
                 {showTranslations ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
               </button>
-              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-7 rounded-lg text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold flex items-center justify-center" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><Gauge className="h-3.5 w-3.5" /></button>
+              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-7 rounded-md text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold flex items-center justify-center" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><Gauge className="h-3.5 w-3.5" /></button>
             </div>
           )}
 
@@ -396,7 +396,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               onClick={onOpenAudioSettings}
               aria-label="Audio-Optionen öffnen"
               title="Audio-Optionen"
-              className="h-7 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
+              className="h-7 rounded-md bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer"
             >
               <Volume2 className="w-3.5 h-3.5 text-slate-700" />
             </button>
@@ -408,7 +408,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             onClick={onOpenCheatSheet}
             aria-label="A1 Grammatikübersicht öffnen"
             title="A1 Grammatikübersicht"
-            className="h-7 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
+            className="h-7 rounded-md bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer"
           >
             <FileText className="w-3.5 h-3.5 text-slate-700" />
           </button>

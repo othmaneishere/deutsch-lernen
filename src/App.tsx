@@ -29,9 +29,9 @@ export function App() {
   const [activeView, setActiveViewState] = useState<'course' | 'stories'>(() => {
     const pathView = getViewFromPath();
     if (pathView === 'stories') return 'stories';
-    const saved = localStorage.getItem('deutsch_active_view');
-    if (saved === 'videos') return 'stories';
-    return (saved as 'course' | 'stories') || 'course';
+    // The root URL is always the course. This prevents a persisted Stories
+    // preference from hijacking the public A1 Lehrbuch link.
+    return 'course';
   });
 
   const setActiveView = (view: 'course' | 'stories') => {

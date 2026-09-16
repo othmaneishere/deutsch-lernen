@@ -312,15 +312,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     key={opt.id}
                     type="button"
                     onClick={() => onLanguageChange(opt.id)}
-                    className={`h-8 rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
+                    className={`h-10 rounded-lg text-xs font-bold flex flex-col items-center justify-center gap-0.5 transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-slate-900 text-white shadow-2xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }`}
                     title={opt.label}
                   >
-                    <span className="text-sm leading-none">{opt.flag}</span>
-                    <span className="text-[9px] font-extrabold">{opt.short}</span>
+                    <span className="text-sm leading-none" aria-hidden="true">{opt.flag}</span>
+                    <span className="text-[9px] font-extrabold leading-none">{opt.short}</span>
                   </button>
                 );
               })}
@@ -329,13 +329,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
           {/* 2. Translations Toggle */}
           {onToggleTranslations && (
-            <div className="options-actions mt-2 grid grid-cols-4 gap-1 border-t border-slate-200/70 pt-2">
+            <div className="options-actions mt-2 grid grid-cols-4 items-stretch gap-1 border-t border-slate-200/70 pt-2">
               <button
                 type="button"
                 onClick={onToggleTranslations}
                 aria-label={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
                 title={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
-                className={`options-action h-9 rounded-lg flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
+                className={`options-action h-11 rounded-lg flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
                   showTranslations
                     ? 'text-slate-900 hover:bg-slate-100'
                     : 'text-slate-400 hover:bg-slate-100'
@@ -344,33 +344,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                 <span className="material-symbols-rounded text-[18px]">{showTranslations ? 'visibility' : 'visibility_off'}</span>
                 <span className="text-[8px] font-bold">Text</span>
               </button>
-              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="options-action h-9 rounded-lg text-slate-700 hover:bg-slate-100 flex flex-col items-center justify-center gap-0.5" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><span className="material-symbols-rounded text-[18px]">speed</span><span className="text-[8px] font-bold">Tempo</span></button>
+              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="options-action h-11 rounded-lg text-slate-700 hover:bg-slate-100 flex flex-col items-center justify-center gap-0.5" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><span className="material-symbols-rounded text-[18px]">speed</span><span className="text-[8px] font-bold">Tempo</span></button>
+              {onOpenAudioSettings && (
+                <button type="button" onClick={onOpenAudioSettings} aria-label="Audio-Optionen öffnen" title="Audio-Optionen" className="options-action h-11 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"><span className="material-symbols-rounded text-[18px]">volume_up</span><span className="text-[8px] font-bold">Audio</span></button>
+              )}
+              <button type="button" onClick={onOpenCheatSheet} aria-label="A1 Grammatikübersicht öffnen" title="A1 Grammatikübersicht" className="options-action h-11 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"><span className="material-symbols-rounded text-[18px]">menu_book</span><span className="text-[8px] font-bold">Grammatik</span></button>
             </div>
           )}
-
-          {/* 3. Audio options */}
-          {onOpenAudioSettings && (
-            <button
-              type="button"
-              onClick={onOpenAudioSettings}
-              aria-label="Audio-Optionen öffnen"
-              title="Audio-Optionen"
-              className="options-action h-9 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"
-            >
-              <span className="material-symbols-rounded text-[18px]">volume_up</span><span className="text-[8px] font-bold">Audio</span>
-            </button>
-          )}
-
-          {/* 4. Grammar cheat sheet */}
-          <button
-            type="button"
-            onClick={onOpenCheatSheet}
-            aria-label="A1 Grammatikübersicht öffnen"
-            title="A1 Grammatikübersicht"
-            className="options-action h-9 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"
-          >
-            <span className="material-symbols-rounded text-[18px]">menu_book</span><span className="text-[8px] font-bold">Grammatik</span>
-          </button>
 
           {/* Course Progress Indicator */}
           <div className="pt-0.5">

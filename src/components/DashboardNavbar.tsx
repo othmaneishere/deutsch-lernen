@@ -2,13 +2,11 @@ import React from 'react';
 import {
   PanelLeftClose,
   PanelLeftOpen,
-  BookOpen,
-  BookMarked,
-  Library,
 } from 'lucide-react';
 import { CoursePage, LanguageMode } from '../types';
 import { getUnitForChapter, getUnitTitle } from '../data/courseUnits';
 import { chaptersOverview } from '../data/chaptersData';
+import { PrimaryNavigation } from './PrimaryNavigation';
 
 interface DashboardNavbarProps {
   isSidebarOpen: boolean;
@@ -91,47 +89,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
         )}
       </div>
 
-      {/* Right: Primary Views Switcher (A1 Lehrbuch vs Hörgeschichten) */}
-      <div className="flex items-center gap-2 shrink-0">
-        <div className="inline-flex items-center p-1 rounded-2xl bg-slate-100 border border-slate-200/80 shadow-2xs">
-          <a
-            href="/kurs"
-            aria-current={activeView === 'course' ? 'page' : undefined}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
-              activeView === 'course'
-                ? 'bg-white text-slate-900 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <BookOpen className="w-3.5 h-3.5 text-slate-700" />
-            <span className="hidden sm:inline">A1 Lehrbuch</span>
-            <span className="sm:hidden">Kurs</span>
-          </a>
-
-          <a
-            href="/geschichten"
-            aria-current={activeView === 'stories' ? 'page' : undefined}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
-              activeView === 'stories'
-                ? 'bg-slate-900 text-white shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <BookMarked className={`w-3.5 h-3.5 ${activeView === 'stories' ? 'text-white' : 'text-slate-700'}`} />
-            <span className="hidden sm:inline">Hörgeschichten</span>
-            <span className="sm:hidden">Audio</span>
-          </a>
-
-          <a
-            href="/wortschatz"
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition cursor-pointer"
-            title="Wortschatz öffnen"
-          >
-            <Library className="w-3.5 h-3.5 text-slate-700" />
-            <span className="hidden sm:inline">Wortschatz</span>
-          </a>
-        </div>
-      </div>
+      <PrimaryNavigation active="course" className="shrink-0" />
     </header>
   );
 };

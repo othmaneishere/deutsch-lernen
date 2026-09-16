@@ -10,6 +10,7 @@ export interface StorySentence {
 
 export interface GermanStory {
   id: string;
+  coverImage: string;
   titleDe: string;
   titleEn: string;
   titleFr: string;
@@ -37,6 +38,7 @@ export interface GermanStory {
 export const GERMAN_STORIES: GermanStory[] = [
   {
     id: 'story-1',
+    coverImage: '/images/story-berlin.png',
     titleDe: 'Ein Tag in Berlin',
     titleEn: 'A Day in Berlin',
     titleFr: 'Une journée à Berlin',
@@ -117,6 +119,7 @@ export const GERMAN_STORIES: GermanStory[] = [
   },
   {
     id: 'story-2',
+    coverImage: '/images/story-supermarkt.png',
     titleDe: 'Im Supermarkt um die Ecke',
     titleEn: 'At the Corner Supermarket',
     titleFr: 'Au supermarché du coin',
@@ -197,6 +200,7 @@ export const GERMAN_STORIES: GermanStory[] = [
   },
   {
     id: 'story-3',
+    coverImage: '/images/story-sonntag.png',
     titleDe: 'Ein gemütlicher Sonntag',
     titleEn: 'A Cozy Sunday',
     titleFr: 'Un dimanche agréable',
@@ -277,6 +281,7 @@ export const GERMAN_STORIES: GermanStory[] = [
   },
   {
     id: 'story-4',
+    coverImage: '/images/story-cafe.png',
     titleDe: 'Im Café am Marktplatz',
     titleEn: 'At the Market Square Café',
     titleFr: 'Au café de la place du marché',
@@ -357,6 +362,7 @@ export const GERMAN_STORIES: GermanStory[] = [
   },
   {
     id: 'story-5',
+    coverImage: '/images/story-wohnung.png',
     titleDe: 'Die erste eigene Wohnung',
     titleEn: 'The First Own Apartment',
     titleFr: 'Le premier appartement personnel',
@@ -437,6 +443,7 @@ export const GERMAN_STORIES: GermanStory[] = [
   },
   {
     id: 'story-6',
+    coverImage: '/images/story-zugreise.png',
     titleDe: 'Die Zugreise in die Berge',
     titleEn: 'Train Journey into the Mountains',
     titleFr: 'Voyage en train dans les montagnes',

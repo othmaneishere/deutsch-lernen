@@ -10,7 +10,6 @@ import {
   Tag,
   CheckCircle2,
   Layers,
-  Search,
   BookMarked,
   SlidersHorizontal,
   Lock,
@@ -41,7 +40,6 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
 }) => {
   const [stories] = useState<GermanStory[]>(GERMAN_STORIES);
   const [activeStoryId, setActiveStoryId] = useState<string>(GERMAN_STORIES[0].id);
-  const [searchQuery, setSearchQuery] = useState('');
   const [levelFilter, setLevelFilter] = useState<'all' | 'A1' | 'A2'>('all');
   const [translationMode, setTranslationMode] = useState<'interlinear' | 'end_of_story' | 'hidden'>('interlinear');
   const [currentlyPlayingSentenceId, setCurrentlyPlayingSentenceId] = useState<string | null>(null);
@@ -103,14 +101,6 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
 
   const filteredStories = stories.filter((story) => {
     if (levelFilter !== 'all' && story.level !== levelFilter) return false;
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      return (
-        story.titleDe.toLowerCase().includes(q) ||
-        story.summaryDe.toLowerCase().includes(q) ||
-        story.category.toLowerCase().includes(q)
-      );
-    }
     return true;
   });
 
@@ -254,27 +244,6 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
               </button>
             </div>
 
-            {/* Search Box */}
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Thema oder Titel suchen..."
-                className="w-full pl-9 pr-7 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-slate-400 focus:border-slate-400 transition"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-
             {/* Stories List */}
             <div className="space-y-1.5 max-h-[580px] overflow-y-auto pr-1 scrollbar-thin">
               {filteredStories.map((story) => {
@@ -413,6 +382,8 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                       {getLocalizedTitle(activeStory)}
                     </p>
                   )}
+
+                  <img src={activeStory.coverImage} alt="" className="mt-4 aspect-[16/7] w-full rounded-2xl object-cover border border-slate-200/80" />
                 </div>
 
                 {/* Primary Audio Controls */}

@@ -49,6 +49,15 @@
   box-shadow: 0 4px 12px rgba(48, 71, 117, 0.12);
 }
 
+.options-dock button {
+  border: 0;
+  background: transparent;
+}
+
+.options-dock button:hover {
+  background: rgba(231, 238, 250, 0.8);
+}
+
 .font-arabic {
   font-family: 'Alexandria', system-ui, -apple-system, sans-serif;
 }

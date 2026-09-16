@@ -57,22 +57,6 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
           </span>
         </button>
 
-        {/* Level Category Pills */}
-        <div className="flex items-center gap-1.5">
-          <span className="text-xs font-extrabold px-2.5 py-1 rounded-lg bg-slate-900 text-white shadow-2xs">
-            A1
-          </span>
-          <button
-            type="button"
-            onClick={() => onOpenLevelComingSoon && onOpenLevelComingSoon('A2')}
-            className="flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition cursor-pointer"
-            title="A2 ist in Vorbereitung"
-          >
-            <span>A2</span>
-            <span className="text-[9px] font-semibold uppercase text-amber-700">Bald</span>
-          </button>
-        </div>
-
         <span className="text-slate-300 hidden md:inline">/</span>
 
         {activeView === 'course' ? (

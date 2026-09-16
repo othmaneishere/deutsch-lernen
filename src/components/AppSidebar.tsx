@@ -8,7 +8,6 @@ import {
   BookOpen,
   Volume2,
   BookMarked,
-  Lock,
   Eye,
   EyeOff,
   Gauge,
@@ -81,8 +80,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
     { id: 'fr', label: 'Français', short: 'FR', flag: '🇫🇷' },
   ];
 
-  const speedOptions = [0.8, 0.9, 1.0];
-
   const progressPercent = Math.round((currentPageNumber / (totalPages || 19)) * 100);
 
   return (
@@ -135,49 +132,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           >
             <PanelLeftClose className="w-5 h-5" />
           </button>
-        </div>
-
-        {/* Level Category Selector: A1 (Active) vs A2 (Coming Soon) & B1 */}
-        <div className="p-3.5 border-b border-slate-100 bg-slate-50/60 space-y-2">
-          <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400 px-1">
-            <span>Sprachniveau</span>
-            <span className="text-emerald-700 font-bold">A1 Aktiv</span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-200/70 rounded-xl">
-            {/* A1 Active */}
-            <button
-              type="button"
-              className="py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-2xs cursor-default"
-            >
-              <span>A1</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            </button>
-
-            {/* A2 Coming Soon */}
-            <button
-              type="button"
-              onClick={() => onOpenLevelComingSoon && onOpenLevelComingSoon('A2')}
-              className="py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-white/60 transition flex items-center justify-center gap-1 cursor-pointer"
-              title="A2 ist in Vorbereitung (Klicken für Info)"
-            >
-              <span>A2</span>
-              <span className="text-[9px] px-1 rounded bg-amber-100 text-amber-800 font-bold border border-amber-300">
-                Bald
-              </span>
-            </button>
-
-            {/* B1 Coming Soon */}
-            <button
-              type="button"
-              onClick={() => onOpenLevelComingSoon && onOpenLevelComingSoon('B1')}
-              className="py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-700 hover:bg-white/60 transition flex items-center justify-center gap-1 cursor-pointer"
-              title="B1 ist in Planung"
-            >
-              <span>B1</span>
-              <Lock className="w-2.5 h-2.5 text-slate-400" />
-            </button>
-          </div>
         </div>
 
         {/* Primary View Switcher Tabs (Course vs Stories) */}
@@ -339,7 +293,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         </div>
 
         {/* SETTINGS SECTION: compact icon-only controls */}
-        <div className="px-2 py-1.5 border-t border-slate-200 bg-slate-50 space-y-1.5">
+        <div className="options-dock mx-2 mb-2 px-2.5 py-2 border border-slate-200/70 rounded-2xl bg-white/70 space-y-1.5">
           <div className="flex items-center justify-between px-1">
             <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">Optionen</span>
             <Sliders className="w-3 h-3 text-slate-300" aria-hidden="true" />

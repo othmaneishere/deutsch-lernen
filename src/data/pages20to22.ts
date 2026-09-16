@@ -19,7 +19,17 @@ export const pages20to22: CoursePage[] = [
         { de: 'Wann fährt der Zug? – Um 14 Uhr.', ar: 'متى ينطلق القطار؟ – في الساعة الثانية.', en: 'When does the train leave? – At 2 p.m.', fr: 'Quand part le train ? – À 14 heures.' },
         { de: 'Wo ist Gleis drei? – Dort links.', ar: 'أين الرصيف الثالث؟ – هناك على اليسار.', en: 'Where is platform three? – Over there on the left.', fr: 'Où est la voie trois ? – Là-bas à gauche.' },
       ] },
-    ], exercises: [],
+    ], exercises: [
+      { id: 'ex20-match', titleDe: 'Wortschatz: Am Bahnhof', titleAr: 'مفردات: في المحطة', titleEn: 'Vocabulary: At the station', titleFr: 'Vocabulaire : À la gare', type: 'matching', instructionDe: 'Ordne die Wörter zu.', instructionAr: 'صل الكلمات بالمعاني.', instructionEn: 'Match the words to their meanings.', instructionFr: 'Associez les mots à leur sens.', matchingPairs: [
+        { leftDe: 'der Fahrplan', rightKey: 'A', translations: { en: 'timetable', ar: 'جدول المواعيد', fr: 'les horaires' } }, { leftDe: 'das Gleis', rightKey: 'B', translations: { en: 'platform', ar: 'الرصيف', fr: 'la voie' } }, { leftDe: 'der Koffer', rightKey: 'C', translations: { en: 'suitcase', ar: 'حقيبة السفر', fr: 'la valise' } }, { leftDe: 'ankommen', rightKey: 'D', translations: { en: 'to arrive', ar: 'يصل', fr: 'arriver' } },
+      ] },
+      { id: 'ex20-blanks', titleDe: 'Sätze ergänzen', titleAr: 'أكمل الجمل', titleEn: 'Complete the sentences', titleFr: 'Complétez les phrases', type: 'blanks', instructionDe: 'Setze das passende Wort ein.', instructionAr: 'ضع الكلمة المناسبة.', instructionEn: 'Fill in the missing word.', instructionFr: 'Complétez avec le bon mot.', blanks: [
+        { id: 'b20-1', prefixDe: 'Der Zug fährt um 14 Uhr von ', correctAnswer: 'Gleis drei', suffixDe: '.', hint: 'platform' }, { id: 'b20-2', prefixDe: 'Ich kaufe ein ', correctAnswer: 'Ticket', suffixDe: '.', hint: 'travel document' }, { id: 'b20-3', prefixDe: 'Wann ', correctAnswer: 'kommt', suffixDe: ' der Zug an?', hint: 'arrive' },
+      ] },
+      { id: 'ex20-speak', titleDe: 'Sprechen: Meine Reise', titleAr: 'تحدث: رحلتي', titleEn: 'Speaking: My trip', titleFr: 'Expression orale : Mon voyage', type: 'answering', instructionDe: 'Antworte mit ganzen Sätzen.', instructionAr: 'أجب بجمل كاملة.', instructionEn: 'Answer in complete sentences.', instructionFr: 'Répondez avec des phrases complètes.', answeringQuestions: [
+        { qDe: 'Wohin möchtest du reisen?', qAr: 'إلى أين تريد السفر؟', qEn: 'Where would you like to travel?', qFr: 'Où voudrais-tu voyager ?', sampleAnswerDe: 'Ich möchte nach Berlin reisen.' }, { qDe: 'Wie fährst du?', qAr: 'بماذا تسافر؟', qEn: 'How do you travel?', qFr: 'Comment voyages-tu ?', sampleAnswerDe: 'Ich fahre mit dem Zug.' },
+      ] },
+    ],
   },
   {
     id: 21, pageNumber: 21, chapterNumber: 17,
@@ -37,7 +47,15 @@ export const pages20to22: CoursePage[] = [
       { id: 's21-regel', titleDe: '„Es ist“ und „Es gibt“', titleAr: 'استخدام Es ist و Es gibt', titleEn: 'Using “it is” and “there is”', titleFr: 'Employer « il fait » et « il y a »', type: 'rule_card', rulePoints: [
         { de: 'Es ist kalt.', ar: 'الجو بارد.', en: 'It is cold.', fr: 'Il fait froid.' }, { de: 'Es gibt viel Schnee.', ar: 'يوجد ثلج كثير.', en: 'There is a lot of snow.', fr: 'Il y a beaucoup de neige.' },
       ] },
-    ], exercises: [],
+    ], exercises: [
+      { id: 'ex21-match', titleDe: 'Wetterkarten', titleAr: 'كلمات الطقس', titleEn: 'Weather words', titleFr: 'Mots de la météo', type: 'matching', instructionDe: 'Verbinde die Ausdrücke mit der Übersetzung.', instructionAr: 'صل العبارات بالترجمة.', instructionEn: 'Match each expression with its translation.', instructionFr: 'Associez chaque expression à sa traduction.', matchingPairs: [
+        { leftDe: 'Es regnet.', rightKey: 'A', translations: { en: 'It is raining.', ar: 'إنها تمطر.', fr: 'Il pleut.' } }, { leftDe: 'Es ist bewölkt.', rightKey: 'B', translations: { en: 'It is cloudy.', ar: 'الجو غائم.', fr: 'Le ciel est nuageux.' } }, { leftDe: 'Es ist warm.', rightKey: 'C', translations: { en: 'It is warm.', ar: 'الجو دافئ.', fr: 'Il fait chaud.' } },
+      ] },
+      { id: 'ex21-blanks', titleDe: 'Wie ist das Wetter?', titleAr: 'كيف الطقس؟', titleEn: 'What is the weather like?', titleFr: 'Quel temps fait-il ?', type: 'blanks', instructionDe: 'Ergänze den Satz.', instructionAr: 'أكمل الجملة.', instructionEn: 'Complete the sentence.', instructionFr: 'Complétez la phrase.', blanks: [
+        { id: 'b21-1', prefixDe: 'Im Winter ist es ', correctAnswer: 'kalt', suffixDe: '.', hint: 'opposite of warm' }, { id: 'b21-2', prefixDe: 'Die Sonne ', correctAnswer: 'scheint', suffixDe: '.', hint: 'shine' }, { id: 'b21-3', prefixDe: 'Wir bleiben zu Hause, weil es ', correctAnswer: 'regnet', suffixDe: '.', hint: 'rain' },
+      ] },
+      { id: 'ex21-write', titleDe: 'Schreiben: Mein Tag', titleAr: 'كتابة: يومي', titleEn: 'Writing: My day', titleFr: 'Écriture : Ma journée', type: 'writing', instructionDe: 'Schreibe drei Sätze über das Wetter und deine Pläne.', instructionAr: 'اكتب ثلاث جمل عن الطقس وخططك.', instructionEn: 'Write three sentences about the weather and your plans.', instructionFr: 'Écrivez trois phrases sur la météo et vos projets.', writingTask: { promptDe: 'Wie ist das Wetter heute? Was machst du?', promptAr: 'كيف الطقس اليوم؟ ماذا ستفعل؟', promptEn: 'What is the weather like today? What are you doing?', promptFr: 'Quel temps fait-il aujourd’hui ? Que fais-tu ?', exampleDe: ['Heute ist es sonnig.', 'Ich gehe in den Park.', 'Am Abend trinke ich Tee.'] } },
+    ],
   },
   {
     id: 22, pageNumber: 22, chapterNumber: 18,
@@ -56,6 +74,16 @@ export const pages20to22: CoursePage[] = [
       { id: 's22-regel', titleDe: 'Wünsche mit „möchten“', titleAr: 'الرغبات مع möchten', titleEn: 'Wishes with “möchten”', titleFr: 'Les souhaits avec « möchten »', type: 'rule_card', rulePoints: [
         { de: 'Ich möchte einen Kaffee.', ar: 'أريد قهوة.', en: 'I would like a coffee.', fr: 'Je voudrais un café.' }, { de: 'Möchtest du mitkommen?', ar: 'هل تريد المجيء؟', en: 'Would you like to come along?', fr: 'Tu voudrais venir ?' },
       ] },
-    ], exercises: [],
+    ], exercises: [
+      { id: 'ex22-match', titleDe: 'Einladungen verstehen', titleAr: 'فهم الدعوات', titleEn: 'Understanding invitations', titleFr: 'Comprendre les invitations', type: 'matching', instructionDe: 'Finde die passende Antwort.', instructionAr: 'اختر الجواب المناسب.', instructionEn: 'Find the suitable reply.', instructionFr: 'Trouvez la réponse adaptée.', matchingPairs: [
+        { leftDe: 'Möchtest du mitkommen?', rightKey: 'A', translations: { en: 'Gern!', ar: 'بكل سرور!', fr: 'Avec plaisir !' } }, { leftDe: 'Hast du am Samstag Zeit?', rightKey: 'B', translations: { en: 'Leider kann ich nicht.', ar: 'للأسف لا أستطيع.', fr: 'Malheureusement, je ne peux pas.' } }, { leftDe: 'Wann treffen wir uns?', rightKey: 'C', translations: { en: 'Um halb sieben.', ar: 'في السادسة والنصف.', fr: 'À six heures et demie.' } },
+      ] },
+      { id: 'ex22-blanks', titleDe: 'Pläne machen', titleAr: 'وضع الخطط', titleEn: 'Making plans', titleFr: 'Faire des projets', type: 'blanks', instructionDe: 'Setze „möchte“ oder „kann“ ein.', instructionAr: 'ضع möchte أو kann.', instructionEn: 'Use “möchte” or “kann”.', instructionFr: 'Utilisez « möchte » ou « kann ».', blanks: [
+        { id: 'b22-1', prefixDe: 'Ich ', correctAnswer: 'möchte', suffixDe: ' am Sonntag essen gehen.', hint: 'would like' }, { id: 'b22-2', prefixDe: 'Leider ', correctAnswer: 'kann', suffixDe: ' ich heute nicht.', hint: 'can' }, { id: 'b22-3', prefixDe: 'Wir ', correctAnswer: 'können', suffixDe: ' uns um sechs treffen.', hint: 'can, plural' },
+      ] },
+      { id: 'ex22-speak', titleDe: 'Sprechen: Eine Einladung', titleAr: 'تحدث: دعوة', titleEn: 'Speaking: An invitation', titleFr: 'Expression orale : Une invitation', type: 'answering', instructionDe: 'Sprich mit einem Partner.', instructionAr: 'تحدث مع شريك.', instructionEn: 'Speak with a partner.', instructionFr: 'Parlez avec un partenaire.', answeringQuestions: [
+        { qDe: 'Wen möchtest du einladen?', qAr: 'من تريد دعوته؟', qEn: 'Who would you like to invite?', qFr: 'Qui voudrais-tu inviter ?', sampleAnswerDe: 'Ich möchte meine Freundin einladen.' }, { qDe: 'Wann und wo trefft ihr euch?', qAr: 'متى وأين تلتقون؟', qEn: 'When and where will you meet?', qFr: 'Quand et où vous retrouvez-vous ?', sampleAnswerDe: 'Wir treffen uns am Samstag im Café.' },
+      ] },
+    ],
   },
 ];

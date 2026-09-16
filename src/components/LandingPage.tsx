@@ -3,7 +3,7 @@ import { ArrowRight, BookOpen, Headphones, Languages, Sparkles } from 'lucide-re
 
 export const LandingPage: React.FC = () => (
   <div className="landing-page min-h-screen bg-[#f5f8ff] text-slate-900">
-    <header className="absolute inset-x-0 top-0 z-20 mx-auto flex items-center justify-between px-5 py-5 text-white sm:px-8 lg:px-12">
+    <header className="absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 text-white sm:px-8 lg:px-12">
       <a href="/" className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/50 bg-slate-950/75 text-sm font-black text-white shadow-lg backdrop-blur-md">DE</span><span><span className="block text-sm font-extrabold tracking-tight drop-shadow">Deutsch Lernen</span><span className="block text-[11px] text-white/75">A1 Sprachstudio</span></span></a>
       <nav className="flex items-center gap-2 text-sm font-bold"><a href="/geschichten" className="hidden rounded-xl border border-white/40 bg-white/15 px-4 py-2.5 text-white backdrop-blur-md transition hover:bg-white/25 sm:inline-flex">Geschichten</a><a href="/kurs" className="inline-flex items-center gap-2 rounded-xl bg-slate-950/85 px-4 py-2.5 text-white shadow-lg backdrop-blur-md transition hover:bg-indigo-700">Kurs öffnen <ArrowRight className="h-4 w-4" /></a></nav>
     </header>

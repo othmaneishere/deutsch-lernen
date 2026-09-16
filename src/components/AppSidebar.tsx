@@ -83,8 +83,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
     { id: 'fr', label: 'Français', short: 'FR', flag: '🇫🇷' },
   ];
 
-  const progressPercent = Math.round((currentPageNumber / (totalPages || 19)) * 100);
-
   return (
     <>
       {/* Mobile Backdrop */}
@@ -341,19 +339,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             </div>
           )}
 
-          {/* Course Progress Indicator */}
-          <div className="pt-0.5">
-            <div className="flex items-center justify-between text-[9px] text-slate-400 font-semibold mb-1">
-              <span>Fortschritt A1</span>
-              <span className="font-mono font-bold">{progressPercent}%</span>
-            </div>
-            <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-slate-900 rounded-full transition-all duration-300"
-                style={{ width: `${progressPercent}%` }}
-              />
-            </div>
-          </div>
         </div>
       </aside>
     </>

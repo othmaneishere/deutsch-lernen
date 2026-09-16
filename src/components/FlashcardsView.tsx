@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, RotateCw, ChevronLeft, ChevronRight, Check, Sparkles, Eye, CheckCircle2 } from 'lucide-react';
+import { Volume2, RotateCw, ChevronLeft, ChevronRight, Sparkles, Eye } from 'lucide-react';
 import { VocabularyItem, LanguageMode } from '../types';
 import { speakGerman } from '../utils/speech';
 
@@ -14,12 +14,10 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [knownWords, setKnownWords] = useState<Set<number>>(new Set());
 
   if (!vocabItems || vocabItems.length === 0) return null;
 
   const currentItem = vocabItems[currentIndex];
-  const isKnown = knownWords.has(currentIndex);
 
   const handleNext = () => {
     setIsFlipped(false);
@@ -29,19 +27,6 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
   const handlePrev = () => {
     setIsFlipped(false);
     setCurrentIndex((prev) => (prev - 1 + vocabItems.length) % vocabItems.length);
-  };
-
-  const toggleKnown = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setKnownWords((prev) => {
-      const next = new Set(prev);
-      if (next.has(currentIndex)) {
-        next.delete(currentIndex);
-      } else {
-        next.add(currentIndex);
-      }
-      return next;
-    });
   };
 
   const handleSpeak = (e: React.MouseEvent) => {
@@ -58,31 +43,13 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
       ? currentItem.fr
       : currentItem.noteDe || 'Nur Deutsch';
 
-  const progressPercent = Math.round(((currentIndex + 1) / vocabItems.length) * 100);
-
   return (
     <div className="w-full max-w-xl mx-auto space-y-4">
-      {/* Progress Top Bar */}
+      {/* Card position */}
       <div className="flex items-center justify-between gap-3 text-xs">
         <span className="font-bold text-slate-700">
           Karte {currentIndex + 1} von {vocabItems.length}
         </span>
-        <div className="flex items-center gap-2">
-          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-            {knownWords.size} gemeistert
-          </span>
-          <span className="font-mono text-xs text-slate-400 font-bold">
-            {progressPercent}%
-          </span>
-        </div>
-      </div>
-
-      {/* Progress bar line */}
-      <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-indigo-600 transition-all duration-300 rounded-full"
-          style={{ width: `${progressPercent}%` }}
-        />
       </div>
 
       {/* Modern Interactive Flip Card */}
@@ -122,18 +89,6 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
               <Volume2 className="w-5 h-5" />
             </button>
 
-            <button
-              type="button"
-              onClick={toggleKnown}
-              className={`p-2 rounded-xl transition cursor-pointer ${
-                isKnown
-                  ? 'text-emerald-600 bg-emerald-50 border border-emerald-200'
-                  : 'text-slate-400 hover:text-emerald-600 hover:bg-slate-100'
-              }`}
-              title={isKnown ? 'Als gemeistert markiert' : 'Als gelernt abhaken'}
-            >
-              <CheckCircle2 className="w-5 h-5" />
-            </button>
           </div>
         </div>
 

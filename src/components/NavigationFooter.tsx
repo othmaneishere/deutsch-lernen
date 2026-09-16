@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, CheckCircle2, Circle } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CoursePage, LanguageMode, ChapterOverview } from '../types';
-import { isPageCompleted, togglePageCompleted, subscribeProgress, getCompletedPages } from '../utils/studyProgress';
 
 interface NavigationFooterProps {
   currentPage: CoursePage;
@@ -17,29 +16,11 @@ export const NavigationFooter: React.FC<NavigationFooterProps> = ({
   allPages,
   onSelectPage,
 }) => {
-  const [completed, setCompleted] = useState(false);
-  const [completedCount, setCompletedCount] = useState(0);
-
-  useEffect(() => {
-    const update = () => {
-      setCompleted(isPageCompleted(currentPage.pageNumber));
-      setCompletedCount(getCompletedPages().length);
-    };
-    update();
-    return subscribeProgress(update);
-  }, [currentPage.pageNumber]);
-
-  const handleToggleComplete = () => {
-    const nowDone = togglePageCompleted(currentPage.pageNumber);
-    setCompleted(nowDone);
-  };
-
   const currentIndex = allPages.findIndex((p) => p.pageNumber === currentPage.pageNumber);
   const prevPage = currentIndex > 0 ? allPages[currentIndex - 1] : null;
   const nextPage = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
 
   const totalPages = allPages.length || 19;
-  const progressPercent = Math.round((completedCount / totalPages) * 100);
 
   return (
     <footer className="pt-8 pb-16">
@@ -65,38 +46,9 @@ export const NavigationFooter: React.FC<NavigationFooterProps> = ({
           <div className="hidden sm:block flex-1 sm:max-w-xs" />
         )}
 
-        {/* Center: Completion Status & Course Progress */}
+        {/* Center: Current page */}
         <div className="flex flex-col items-center gap-2.5 py-1">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs font-bold text-slate-600">
-              Seite {currentPage.pageNumber} von {totalPages}
-            </span>
-            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-800 border border-slate-200">
-              {progressPercent}% abgeschlossen
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleToggleComplete}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer border shadow-2xs ${
-              completed
-                ? 'bg-emerald-600 text-white border-emerald-600 shadow-emerald-100'
-                : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
-            }`}
-          >
-            {completed ? (
-              <>
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Als gelernt markiert</span>
-              </>
-            ) : (
-              <>
-                <Circle className="w-4 h-4 text-slate-400" />
-                <span>Als gelernt markieren</span>
-              </>
-            )}
-          </button>
+          <span className="font-mono text-xs font-bold text-slate-600">Seite {currentPage.pageNumber} von {totalPages}</span>
         </div>
 
         {/* Next Page Button */}

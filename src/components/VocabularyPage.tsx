@@ -34,7 +34,7 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ languageMode }) 
     if (languageMode === 'none') return '';
     const item = translations[word];
     if (item) return item[languageMode];
-    return languageMode === 'en' ? 'everyday word' : languageMode === 'fr' ? 'mot du quotidien' : 'كلمة يومية';
+    return item ? item[languageMode] : '';
   };
   const playGroup = (title: string, words: string[]) => {
     if (playingTitle === title) { stopSpeech(); setPlayingTitle(null); return; }

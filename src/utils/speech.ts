@@ -26,8 +26,8 @@ let globalVoice = typeof window !== 'undefined'
   ? localStorage.getItem('deutsch_tts_voice') || 'de-DE-KatjaNeural'
   : 'de-DE-KatjaNeural';
 
-function notifyListeners(isPlaying: boolean, text: string = '') {
-  currentPlayingText = isPlaying ? text : '';
+function notifyListeners(isPlaying: boolean, text: string = '', preserveText = false) {
+  currentPlayingText = isPlaying ? text : (preserveText ? currentPlayingText : '');
   listeners.forEach((listener) => {
     try {
       listener({ isPlaying, text: currentPlayingText, speed: globalSpeed, voice: globalVoice });
@@ -92,6 +92,37 @@ export function stopSpeech() {
     window.speechSynthesis.cancel();
   }
   notifyListeners(false);
+}
+
+export function pauseSpeech(): boolean {
+  if (activeAudio) {
+    activeAudio.pause();
+    notifyListeners(false, currentPlayingText, true);
+    return true;
+  }
+
+  if (typeof window !== 'undefined' && window.speechSynthesis?.speaking && !window.speechSynthesis.paused) {
+    window.speechSynthesis.pause();
+    notifyListeners(false, currentPlayingText, true);
+    return true;
+  }
+
+  return false;
+}
+
+export function resumeSpeech(): boolean {
+  if (activeAudio) {
+    void activeAudio.play().then(() => notifyListeners(true, currentPlayingText)).catch(() => undefined);
+    return true;
+  }
+
+  if (typeof window !== 'undefined' && window.speechSynthesis?.paused) {
+    window.speechSynthesis.resume();
+    notifyListeners(true, currentPlayingText);
+    return true;
+  }
+
+  return false;
 }
 
 // Clean text for speech
@@ -201,4 +232,3 @@ function fallbackWebSpeech(cleanText: string, onEnd?: () => void): boolean {
     return false;
   }
 }
-

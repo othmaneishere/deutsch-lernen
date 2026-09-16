@@ -3,6 +3,7 @@ import {
   Volume2,
   Square,
   Play,
+  Pause,
   RotateCcw,
   BookOpen,
   Languages,
@@ -21,6 +22,8 @@ import {
   stopSpeech,
   subscribeSpeechState,
   getPlaybackSpeed,
+  pauseSpeech,
+  resumeSpeech,
   setPlaybackSpeed,
   getSelectedVoice,
 } from '../utils/speech';
@@ -44,6 +47,7 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
   const [translationMode, setTranslationMode] = useState<'interlinear' | 'end_of_story' | 'hidden'>('interlinear');
   const [currentlyPlayingSentenceId, setCurrentlyPlayingSentenceId] = useState<string | null>(null);
   const [isFullPlaying, setIsFullPlaying] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
   const [currentSpeed, setCurrentSpeed] = useState<number>(getPlaybackSpeed());
   const [currentVoice, setCurrentVoice] = useState<string>(getSelectedVoice());
 
@@ -53,7 +57,8 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
     const unsub = subscribeSpeechState((state) => {
       setCurrentSpeed(state.speed);
       setCurrentVoice(state.voice);
-      if (!state.isPlaying) {
+      setIsPaused(!state.isPlaying && Boolean(state.text));
+      if (!state.isPlaying && !state.text) {
         setCurrentlyPlayingSentenceId(null);
         setIsFullPlaying(false);
       }
@@ -66,30 +71,33 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
 
   const handlePlayFullStory = () => {
     if (isFullPlaying) {
-      stopSpeech();
-      setIsFullPlaying(false);
-      setCurrentlyPlayingSentenceId(null);
+      if (isPaused) resumeSpeech();
+      else pauseSpeech();
       return;
     }
 
     setIsFullPlaying(true);
+    setIsPaused(false);
     speakGerman(activeStory.fullStoryDe, () => {
       setIsFullPlaying(false);
+      setIsPaused(false);
       setCurrentlyPlayingSentenceId(null);
     });
   };
 
   const handlePlaySentence = (sentence: StorySentence) => {
     if (currentlyPlayingSentenceId === sentence.id) {
-      stopSpeech();
-      setCurrentlyPlayingSentenceId(null);
-      setIsFullPlaying(false);
+      if (isPaused) resumeSpeech();
+      else pauseSpeech();
       return;
     }
 
+    stopSpeech();
     setCurrentlyPlayingSentenceId(sentence.id);
     setIsFullPlaying(false);
+    setIsPaused(false);
     speakGerman(sentence.de, () => {
+      setIsPaused(false);
       setCurrentlyPlayingSentenceId(null);
     });
   };
@@ -383,7 +391,9 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                     </p>
                   )}
 
-                  <img src={activeStory.coverImage} alt="" className="mt-4 aspect-[16/7] w-full rounded-2xl object-cover border border-slate-200/80" />
+                  <div className="mt-5 w-full overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-100/50 p-2 shadow-sm">
+                    <img src={activeStory.coverImage} alt="" className="mx-auto block max-h-[560px] w-full rounded-2xl object-contain" />
+                  </div>
                 </div>
 
                 {/* Primary Audio Controls */}
@@ -399,8 +409,8 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                   >
                     {isFullPlaying ? (
                       <>
-                        <Square className="w-3.5 h-3.5 fill-current" />
-                        <span>Stoppen</span>
+                        {isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />}
+                        <span>{isPaused ? 'Fortsetzen' : 'Pause'}</span>
                       </>
                     ) : (
                       <>
@@ -514,7 +524,7 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                             title="Diesen Satz anhören"
                           >
                             {isSentencePlaying ? (
-                              <Square className="w-3.5 h-3.5 fill-current" />
+                              isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />
                             ) : (
                               <Volume2 className="w-3.5 h-3.5" />
                             )}

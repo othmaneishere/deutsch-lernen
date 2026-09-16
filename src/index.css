@@ -90,6 +90,40 @@
   background: rgba(231, 238, 250, 0.8);
 }
 
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+}
+
+.options-panel {
+  box-shadow: 0 8px 22px rgba(65, 87, 132, 0.08);
+}
+
+.options-heading-icon {
+  color: #7183a4;
+  font-size: 19px;
+}
+
+.options-action {
+  color: #687998;
+}
+
+.options-action:hover {
+  color: #182b4d;
+}
+
 .font-arabic {
   font-family: 'Alexandria', system-ui, -apple-system, sans-serif;
 }

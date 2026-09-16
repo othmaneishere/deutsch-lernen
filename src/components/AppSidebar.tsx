@@ -293,15 +293,18 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         </div>
 
         {/* SETTINGS SECTION: compact icon-only controls */}
-        <div className="options-dock mx-2 mb-2 px-2.5 py-2 border border-slate-200/70 rounded-2xl bg-white/70 space-y-1.5">
-          <div className="flex items-center justify-between px-1">
-            <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">Optionen</span>
-            <Sliders className="w-3 h-3 text-slate-300" aria-hidden="true" />
+        <div className="options-panel mx-2 mb-2 rounded-2xl border border-slate-200/70 bg-white/80 p-2.5 shadow-sm">
+          <div className="flex items-center justify-between px-1 pb-2">
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-slate-500">Optionen</p>
+              <p className="mt-0.5 text-[10px] text-slate-400">Lernen personalisieren</p>
+            </div>
+            <span className="material-symbols-rounded options-heading-icon" aria-hidden="true">tune</span>
           </div>
 
           {/* 1. Language Mode Selector */}
           <div className="space-y-1">
-            <div className="grid grid-cols-4 gap-0.5">
+            <div className="options-language grid grid-cols-4 gap-1 rounded-xl bg-slate-100/80 p-1">
               {languageOptions.map((opt) => {
                 const isSelected = languageMode === opt.id;
                 return (
@@ -309,7 +312,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     key={opt.id}
                     type="button"
                     onClick={() => onLanguageChange(opt.id)}
-                    className={`h-7 rounded-md text-xs font-bold flex items-center justify-center transition-all cursor-pointer ${
+                    className={`h-8 rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-slate-900 text-white shadow-2xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -317,6 +320,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     title={opt.label}
                   >
                     <span className="text-sm leading-none">{opt.flag}</span>
+                    <span className="text-[9px] font-extrabold">{opt.short}</span>
                   </button>
                 );
               })}
@@ -325,21 +329,22 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
           {/* 2. Translations Toggle */}
           {onToggleTranslations && (
-            <div className="grid grid-cols-4 gap-0.5">
+            <div className="options-actions mt-2 grid grid-cols-4 gap-1 border-t border-slate-200/70 pt-2">
               <button
                 type="button"
                 onClick={onToggleTranslations}
                 aria-label={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
                 title={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
-                className={`h-7 rounded-md flex items-center justify-center transition cursor-pointer ${
+                className={`options-action h-9 rounded-lg flex flex-col items-center justify-center gap-0.5 transition cursor-pointer ${
                   showTranslations
                     ? 'text-slate-900 hover:bg-slate-100'
                     : 'text-slate-400 hover:bg-slate-100'
                 }`}
               >
-                {showTranslations ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                <span className="material-symbols-rounded text-[18px]">{showTranslations ? 'visibility' : 'visibility_off'}</span>
+                <span className="text-[8px] font-bold">Text</span>
               </button>
-              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-7 rounded-md text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold flex items-center justify-center" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><Gauge className="h-3.5 w-3.5" /></button>
+              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="options-action h-9 rounded-lg text-slate-700 hover:bg-slate-100 flex flex-col items-center justify-center gap-0.5" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><span className="material-symbols-rounded text-[18px]">speed</span><span className="text-[8px] font-bold">Tempo</span></button>
             </div>
           )}
 
@@ -350,9 +355,9 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               onClick={onOpenAudioSettings}
               aria-label="Audio-Optionen öffnen"
               title="Audio-Optionen"
-              className="h-7 rounded-md bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer"
+              className="options-action h-9 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"
             >
-              <Volume2 className="w-3.5 h-3.5 text-slate-700" />
+              <span className="material-symbols-rounded text-[18px]">volume_up</span><span className="text-[8px] font-bold">Audio</span>
             </button>
           )}
 
@@ -362,9 +367,9 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             onClick={onOpenCheatSheet}
             aria-label="A1 Grammatikübersicht öffnen"
             title="A1 Grammatikübersicht"
-            className="h-7 rounded-md bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer"
+            className="options-action h-9 rounded-lg bg-transparent hover:bg-slate-100 text-slate-800 transition flex flex-col items-center justify-center gap-0.5 cursor-pointer"
           >
-            <FileText className="w-3.5 h-3.5 text-slate-700" />
+            <span className="material-symbols-rounded text-[18px]">menu_book</span><span className="text-[8px] font-bold">Grammatik</span>
           </button>
 
           {/* Course Progress Indicator */}

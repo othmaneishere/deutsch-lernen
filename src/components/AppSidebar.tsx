@@ -300,7 +300,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                                     }
                                   }
                                 }}
-                                className="w-8 h-8 rounded-lg object-cover shrink-0 border border-slate-200/80"
+                                className="w-11 h-11 rounded-xl object-cover shrink-0 border border-white/90"
                               />
                             ) : (
                               <span

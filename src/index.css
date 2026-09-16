@@ -15,15 +15,16 @@
 /* Soft glass learning workspace inspired by the supplied visual reference. */
 .study-shell {
   background:
-    linear-gradient(135deg, rgba(239, 246, 255, 0.82), rgba(244, 240, 255, 0.72)),
+    linear-gradient(135deg, rgba(239, 246, 255, 0.93), rgba(246, 243, 255, 0.91)),
     url('/images/german_hero_banner_1789293488824.jpg') center / cover fixed;
   background-blend-mode: screen;
 }
 
 .study-shell .bg-white {
-  background-color: rgba(255, 255, 255, 0.86);
+  background-color: rgba(255, 255, 255, 0.94);
   border-color: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 12px 36px rgba(80, 103, 151, 0.08);
+  box-shadow: 0 10px 28px rgba(80, 103, 151, 0.065);
+  backdrop-filter: blur(8px);
 }
 
 .study-shell .bg-slate-50 {
@@ -42,6 +43,10 @@
 
 .app-topbar {
   box-shadow: 0 8px 28px rgba(70, 97, 145, 0.06);
+}
+
+.app-sidebar img {
+  box-shadow: 0 4px 12px rgba(48, 71, 117, 0.12);
 }
 
 .font-arabic {
@@ -71,4 +76,3 @@ input:focus, textarea:focus, button:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
-

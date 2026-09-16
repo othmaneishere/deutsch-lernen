@@ -127,6 +127,31 @@ export const courseUnits: CourseUnit[] = [
       ring: 'ring-purple-400',
     },
   },
+  {
+    id: 5,
+    number: 5,
+    level: 'A1.2',
+    titleDe: 'Einheit 5: Reisen, Wetter & Pläne',
+    titleAr: 'الوحدة 5: السفر والطقس والخطط',
+    titleEn: 'Unit 5: Travel, Weather & Plans',
+    titleFr: 'Unité 5 : Voyages, météo et projets',
+    descDe: 'Reisen organisieren, Wetter beschreiben, Einladungen aussprechen und Pläne machen.',
+    descAr: 'تنظيم السفر، وصف الطقس، تقديم الدعوات ووضع الخطط.',
+    descEn: 'Organising trips, describing weather, making invitations, and planning.',
+    descFr: 'Organiser un voyage, décrire la météo, inviter et faire des projets.',
+    chapterNumbers: [16, 17, 18],
+    color: {
+      name: 'cyan',
+      gradient: 'from-cyan-600 to-blue-600',
+      bgBadge: 'bg-cyan-50 border-cyan-200 text-cyan-700',
+      textBadge: 'text-cyan-700',
+      borderAccent: 'border-cyan-500',
+      lightBg: 'bg-cyan-50/60',
+      activeTab: 'bg-cyan-600 text-white shadow-cyan-200 shadow-sm',
+      dotColor: 'bg-cyan-500',
+      ring: 'ring-cyan-400',
+    },
+  },
 ];
 
 export const getUnitForChapter = (chapterNumber: number): CourseUnit => {

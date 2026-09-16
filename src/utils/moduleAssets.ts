@@ -222,4 +222,16 @@ export const moduleScenes: Record<number, ModuleVisualScene> = {
     scenarioEn: 'Official forms, train stations, emergency protocols, and comprehensive A1 mastery exam review.',
     scenarioFr: 'Formulaires officiels, gare, urgences et révision complète pour l’examen de niveau A1.',
   },
+  16: {
+    imageSrc: '/images/unit5-travel.png', alt: 'Reisen & Unterwegs', badgeDe: 'Reisen & Unterwegs', badgeAr: 'السفر والتنقل', badgeEn: 'Travel & Getting Around', badgeFr: 'Voyager et se déplacer',
+    scenarioDe: 'Tickets kaufen, nach dem Weg fragen und sicher ankommen.', scenarioAr: 'شراء التذاكر والسؤال عن الطريق والوصول بأمان.', scenarioEn: 'Buy tickets, ask for directions, and arrive with confidence.', scenarioFr: 'Acheter des billets, demander son chemin et arriver sereinement.',
+  },
+  17: {
+    imageSrc: '/images/unit5-weather.png', alt: 'Wetter & Jahreszeiten', badgeDe: 'Wetter & Jahreszeiten', badgeAr: 'الطقس والفصول', badgeEn: 'Weather & Seasons', badgeFr: 'La météo et les saisons',
+    scenarioDe: 'Das Wetter beschreiben und Pläne für den Tag anpassen.', scenarioAr: 'وصف الطقس وتعديل خطط اليوم.', scenarioEn: 'Describe the weather and adjust your plans for the day.', scenarioFr: 'Décrire la météo et adapter ses projets de la journée.',
+  },
+  18: {
+    imageSrc: '/images/unit5-plans.png', alt: 'Pläne & Einladungen', badgeDe: 'Pläne & Einladungen', badgeAr: 'الخطط والدعوات', badgeEn: 'Plans & Invitations', badgeFr: 'Projets et invitations',
+    scenarioDe: 'Einladungen aussprechen, annehmen und Termine vereinbaren.', scenarioAr: 'تقديم الدعوات وقبولها وتحديد المواعيد.', scenarioEn: 'Make invitations, accept them, and arrange plans.', scenarioFr: 'Inviter, accepter une invitation et organiser un rendez-vous.',
+  },
 };

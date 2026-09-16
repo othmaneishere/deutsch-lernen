@@ -181,4 +181,19 @@ export const chaptersOverview: ChapterOverview[] = [
     topicsFr: 'Administrations · Gare · Urgences · Révision générale A1',
     startPage: 19,
   },
+  {
+    number: 16,
+    titleDe: 'Kapitel 16 – Reisen & Unterwegs', titleAr: 'الفصل 16 – السفر والتنقل', titleEn: 'Chapter 16 – Travel & Getting Around', titleFr: 'Chapitre 16 – Voyager et se déplacer',
+    topicsDe: 'Reise · Bahnhof · Tickets · Weg fragen', topicsAr: 'السفر · المحطة · التذاكر · السؤال عن الطريق', topicsEn: 'Travel · Station · Tickets · Directions', topicsFr: 'Voyage · Gare · Billets · Itinéraire', startPage: 20,
+  },
+  {
+    number: 17,
+    titleDe: 'Kapitel 17 – Wetter & Jahreszeiten', titleAr: 'الفصل 17 – الطقس والفصول', titleEn: 'Chapter 17 – Weather & Seasons', titleFr: 'Chapitre 17 – La météo et les saisons',
+    topicsDe: 'Wetter · Jahreszeiten · Temperaturen · Pläne', topicsAr: 'الطقس · الفصول · درجات الحرارة · الخطط', topicsEn: 'Weather · Seasons · Temperatures · Plans', topicsFr: 'Météo · Saisons · Températures · Projets', startPage: 21,
+  },
+  {
+    number: 18,
+    titleDe: 'Kapitel 18 – Pläne & Einladungen', titleAr: 'الفصل 18 – الخطط والدعوات', titleEn: 'Chapter 18 – Plans & Invitations', titleFr: 'Chapitre 18 – Projets et invitations',
+    topicsDe: 'Einladungen · Verabredungen · möchten · Uhrzeit', topicsAr: 'الدعوات · المواعيد · möchten · الوقت', topicsEn: 'Invitations · Arrangements · möchten · Time', topicsFr: 'Invitations · Rendez-vous · möchten · Heure', startPage: 22,
+  },
 ];

@@ -122,7 +122,7 @@ export const ModuleHeroCard: React.FC<ModuleHeroCardProps> = ({
 
           {/* Module Scenario Artwork Thumbnail */}
           {scene && scene.imageSrc && (
-            <div className="w-full md:w-56 lg:w-64 h-36 sm:h-40 shrink-0 rounded-2xl overflow-hidden border border-slate-200/90 shadow-2xs relative group bg-slate-100">
+            <div className="w-full md:w-72 lg:w-80 h-44 sm:h-52 shrink-0 rounded-2xl overflow-hidden border border-slate-200/90 shadow-2xs relative group bg-slate-100">
               <img
                 src={scene.imageSrc}
                 alt={scene.alt || currentPage.pageTitleDe}

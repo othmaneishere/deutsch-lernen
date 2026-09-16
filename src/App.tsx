@@ -18,7 +18,6 @@ import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { GlobalAudioPlayerBar } from './components/GlobalAudioPlayerBar';
 import { AudioSettingsModal } from './components/AudioSettingsModal';
 import { StoriesPage } from './components/StoriesPage';
-import { GermanStoriesSection } from './components/GermanStoriesSection';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
 
@@ -352,12 +351,6 @@ export function App() {
                 ))}
               </div>
             )}
-
-            {/* In-Course German Voice Stories Section */}
-            <GermanStoriesSection
-              languageMode={languageMode}
-              onOpenFullLounge={() => setActiveView('stories')}
-            />
 
             {/* Clean Navigation Footer */}
             <NavigationFooter

@@ -184,7 +184,7 @@ export function App() {
   }
 
   if (window.location.pathname.startsWith('/wortschatz')) {
-    return <VocabularyPage />;
+    return <VocabularyPage languageMode={languageMode} />;
   }
 
   if (activeView === 'stories') {

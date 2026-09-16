@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Volume2,
-  Square,
   Play,
   Pause,
   RotateCcw,
@@ -43,7 +42,6 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
 }) => {
   const [stories] = useState<GermanStory[]>(GERMAN_STORIES);
   const [activeStoryId, setActiveStoryId] = useState<string>(GERMAN_STORIES[0].id);
-  const [levelFilter, setLevelFilter] = useState<'all' | 'A1' | 'A2'>('all');
   const [translationMode, setTranslationMode] = useState<'interlinear' | 'end_of_story' | 'hidden'>('interlinear');
   const [currentlyPlayingSentenceId, setCurrentlyPlayingSentenceId] = useState<string | null>(null);
   const [isFullPlaying, setIsFullPlaying] = useState<boolean>(false);
@@ -107,10 +105,7 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
     setCurrentSpeed(speed);
   };
 
-  const filteredStories = stories.filter((story) => {
-    if (levelFilter !== 'all' && story.level !== levelFilter) return false;
-    return true;
-  });
+  const filteredStories = stories;
 
   const getLocalizedTitle = (story: GermanStory): string => {
     if (languageMode === 'ar') return story.titleAr;
@@ -210,46 +205,6 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                 <Layers className="w-4 h-4 text-slate-700" />
                 <span>Geschichten ({filteredStories.length})</span>
               </h2>
-              <span className="text-[11px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                A1 / A2
-              </span>
-            </div>
-
-            {/* Level selector */}
-            <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl border border-slate-200/80">
-              <button
-                type="button"
-                onClick={() => setLevelFilter('all')}
-                className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                  levelFilter === 'all'
-                    ? 'bg-white text-slate-900 shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Alle ({stories.length})
-              </button>
-              <button
-                type="button"
-                onClick={() => setLevelFilter('A1')}
-                className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                  levelFilter === 'A1'
-                    ? 'bg-slate-900 text-white shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                A1
-              </button>
-              <button
-                type="button"
-                onClick={() => setLevelFilter('A2')}
-                className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                  levelFilter === 'A2'
-                    ? 'bg-slate-900 text-white shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                A2
-              </button>
             </div>
 
             {/* Stories List */}
@@ -521,10 +476,14 @@ export const GermanStoriesLounge: React.FC<GermanStoriesLoungeProps> = ({
                                 ? 'bg-rose-600 text-white border-rose-600'
                                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
                             }`}
-                            title="Diesen Satz anhören"
+                            title={isSentencePlaying ? (isPaused ? 'Audio fortsetzen' : 'Audio pausieren') : 'Diesen Satz anhören'}
+                            aria-label={isSentencePlaying ? (isPaused ? 'Audio fortsetzen' : 'Audio pausieren') : 'Diesen Satz anhören'}
                           >
                             {isSentencePlaying ? (
-                              isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />
+                              <span className="flex items-center gap-1.5">
+                                {isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />}
+                                <span className="hidden sm:inline text-[11px] font-bold">{isPaused ? 'Fortsetzen' : 'Pause'}</span>
+                              </span>
                             ) : (
                               <Volume2 className="w-3.5 h-3.5" />
                             )}

@@ -339,15 +339,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         </div>
 
         {/* SETTINGS SECTION: compact icon-only controls */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Optionen</span>
-            <Sliders className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
+        <div className="px-2.5 py-2 border-t border-slate-200 bg-slate-50 space-y-2">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">Optionen</span>
+            <Sliders className="w-3 h-3 text-slate-300" aria-hidden="true" />
           </div>
 
           {/* 1. Language Mode Selector */}
-          <div className="space-y-1.5">
-            <div className="grid grid-cols-4 gap-1 p-1 bg-white rounded-xl border border-slate-200/80">
+          <div className="space-y-1">
+            <div className="grid grid-cols-4 gap-1 p-1 bg-white/80 rounded-xl border border-slate-200/80">
               {languageOptions.map((opt) => {
                 const isSelected = languageMode === opt.id;
                 return (
@@ -355,14 +355,14 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                     key={opt.id}
                     type="button"
                     onClick={() => onLanguageChange(opt.id)}
-                    className={`py-1.5 rounded-lg text-xs font-bold flex flex-col items-center justify-center transition-all cursor-pointer ${
+                    className={`h-7 rounded-lg text-xs font-bold flex items-center justify-center transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-slate-900 text-white shadow-2xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }`}
                     title={opt.label}
                   >
-                    <span className="text-base leading-none">{opt.flag}</span>
+                    <span className="text-sm leading-none">{opt.flag}</span>
                   </button>
                 );
               })}
@@ -371,13 +371,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
           {/* 2. Translations Toggle */}
           {onToggleTranslations && (
-            <div className="flex items-center gap-2">
+            <div className="grid grid-cols-4 gap-1 p-1 bg-white/80 rounded-xl border border-slate-200/80">
               <button
                 type="button"
                 onClick={onToggleTranslations}
                 aria-label={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
                 title={showTranslations ? 'Übersetzungen ausblenden' : 'Übersetzungen anzeigen'}
-                className={`flex-1 h-10 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center transition cursor-pointer ${
+                className={`h-7 rounded-lg flex items-center justify-center transition cursor-pointer ${
                   showTranslations
                     ? 'text-slate-900 hover:bg-slate-100'
                     : 'text-slate-400 hover:bg-slate-100'
@@ -385,7 +385,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               >
                 {showTranslations ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
               </button>
-              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-10 flex-1 rounded-xl bg-white border border-slate-200/80 text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title="Sprechtempo ändern"><Gauge className="mx-auto h-4 w-4" /></button>
+              <button type="button" onClick={() => { const next = audioSpeed === 1 ? 0.8 : 1; setPlaybackSpeed(next); onSpeedChange?.(next); }} className="h-7 rounded-lg text-slate-700 hover:bg-slate-100 font-mono text-xs font-bold flex items-center justify-center" aria-label={`Sprechtempo ${audioSpeed.toFixed(1)}x`} title={`Sprechtempo ${audioSpeed.toFixed(1)}x`}><Gauge className="h-3.5 w-3.5" /></button>
             </div>
           )}
 
@@ -396,9 +396,9 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               onClick={onOpenAudioSettings}
               aria-label="Audio-Optionen öffnen"
               title="Audio-Optionen"
-              className="w-full h-10 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
+              className="h-7 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
             >
-              <Volume2 className="w-4 h-4 text-slate-700" />
+              <Volume2 className="w-3.5 h-3.5 text-slate-700" />
             </button>
           )}
 
@@ -408,14 +408,14 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             onClick={onOpenCheatSheet}
             aria-label="A1 Grammatikübersicht öffnen"
             title="A1 Grammatikübersicht"
-            className="w-full h-10 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
+            className="h-7 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 transition flex items-center justify-center cursor-pointer shadow-2xs"
           >
-            <FileText className="w-4 h-4 text-slate-700" />
+            <FileText className="w-3.5 h-3.5 text-slate-700" />
           </button>
 
           {/* Course Progress Indicator */}
-          <div className="pt-1">
-            <div className="flex items-center justify-between text-[11px] text-slate-500 font-semibold mb-1">
+          <div className="pt-0.5">
+            <div className="flex items-center justify-between text-[9px] text-slate-400 font-semibold mb-1">
               <span>Fortschritt A1</span>
               <span className="font-mono font-bold">{progressPercent}%</span>
             </div>

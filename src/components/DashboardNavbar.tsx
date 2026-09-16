@@ -36,7 +36,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
   return (
     <header
       id="dashboard-navbar"
-      className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 py-3 flex items-center justify-between gap-4 shadow-2xs"
+      className="app-topbar sticky top-0 z-30 bg-white/60 backdrop-blur-2xl border-b border-white/70 px-4 sm:px-8 py-3 flex items-center justify-between gap-4 shadow-sm"
     >
       {/* Left: Sidebar Toggle & Contextual Course Indicator */}
       <div className="flex items-center gap-3.5 min-w-0">

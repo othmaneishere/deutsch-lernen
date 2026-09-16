@@ -3,13 +3,45 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f8fafc;
+    background-color: #eef5ff;
     color: #0f172a;
   }
 
   [dir="rtl"] {
     font-family: 'Alexandria', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
+}
+
+/* Soft glass learning workspace inspired by the supplied visual reference. */
+.study-shell {
+  background:
+    linear-gradient(135deg, rgba(239, 246, 255, 0.82), rgba(244, 240, 255, 0.72)),
+    url('/images/german_hero_banner_1789293488824.jpg') center / cover fixed;
+  background-blend-mode: screen;
+}
+
+.study-shell .bg-white {
+  background-color: rgba(255, 255, 255, 0.86);
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 36px rgba(80, 103, 151, 0.08);
+}
+
+.study-shell .bg-slate-50 {
+  background-color: rgba(246, 249, 255, 0.72);
+}
+
+.study-shell .border-slate-200,
+.study-shell .border-slate-200\/80,
+.study-shell .border-slate-200\/90 {
+  border-color: rgba(184, 204, 236, 0.58);
+}
+
+.app-sidebar {
+  box-shadow: 12px 0 40px rgba(70, 97, 145, 0.09);
+}
+
+.app-topbar {
+  box-shadow: 0 8px 28px rgba(70, 97, 145, 0.06);
 }
 
 .font-arabic {
@@ -39,5 +71,4 @@ input:focus, textarea:focus, button:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
-
 

@@ -99,7 +99,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
       {/* Primary Sidebar Container */}
       <aside
         id="app-sidebar"
-        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-80 sm:w-84 bg-white border-r border-slate-200/90 shadow-xl lg:shadow-none flex flex-col shrink-0 transition-transform duration-300 ease-in-out ${
+        className={`app-sidebar fixed lg:sticky top-0 left-0 z-40 h-screen w-80 sm:w-84 bg-white/75 border-r border-white/70 shadow-xl lg:shadow-none flex flex-col shrink-0 transition-transform duration-300 ease-in-out backdrop-blur-2xl ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:hidden'
         }`}
       >

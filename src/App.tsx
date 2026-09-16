@@ -202,7 +202,7 @@ export function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-slate-200 selection:text-slate-950 flex flex-row font-reading">
+    <div className="study-shell min-h-screen text-slate-900 selection:bg-indigo-200 selection:text-slate-950 flex flex-row font-reading">
       {/* Collapsible Left Sidebar with All Settings */}
       <AppSidebar
         isOpen={isSidebarOpen}

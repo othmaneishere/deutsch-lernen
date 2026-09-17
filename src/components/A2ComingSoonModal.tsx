@@ -122,20 +122,18 @@ export const A2ComingSoonModal: React.FC<A2ComingSoonModalProps> = ({
             </div>
           </div>
 
-          {/* Current A1 CTA */}
+          {/* Level navigation */}
           <div className="flex items-center justify-between gap-3 pt-2">
             <div className="text-xs text-slate-500">
-              <span className="font-bold text-slate-800">Aktuell verfügbar:</span> A1 (19 Kapitel)
+              <span className="font-bold text-slate-800">Verfügbar:</span> A1 & A2
             </div>
 
-            <button
-              type="button"
-              onClick={onClose}
+            <a href={levelRequested === 'A2' ? '/kurs-a2' : '/kurs'} onClick={onClose}
               className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-2 transition cursor-pointer shadow-xs"
             >
-              <span>A1 Lektionen fortsetzen</span>
+              <span>{levelRequested === 'A2' ? 'A2 Kurs öffnen' : 'A1 Kurs öffnen'}</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

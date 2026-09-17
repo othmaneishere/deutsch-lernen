@@ -20,6 +20,7 @@ import { AudioSettingsModal } from './components/AudioSettingsModal';
 import { StoriesPage } from './components/StoriesPage';
 import { LandingPage } from './components/LandingPage';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
+import { A2CoursePage } from './components/A2CoursePage';
 import { VocabularyPage } from './components/VocabularyPage';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
 
@@ -181,6 +182,10 @@ export function App() {
 
   if (window.location.pathname === '/') {
     return <LandingPage />;
+  }
+
+  if (window.location.pathname.startsWith('/kurs-a2')) {
+    return <A2CoursePage />;
   }
 
   if (window.location.pathname.startsWith('/wortschatz')) {

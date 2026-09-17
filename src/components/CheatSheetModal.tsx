@@ -34,7 +34,7 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
                 Grammatik-Spickzettel (A1)
               </h2>
               <p className="text-xs text-indigo-100">
-                Die wichtigsten Grundregeln, Tabellen und Satzstrukturen auf einen Blick
+                A1 grammar made simple · kurze Regeln, klare Beispiele, English help
               </p>
             </div>
           </div>
@@ -52,11 +52,11 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
         {/* Tab Navigation */}
         <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center gap-2 overflow-x-auto scrollbar-none">
           {[
-            { id: 'articles', label: 'Artikel & Genus' },
-            { id: 'cases', label: 'Kasus: Akkusativ & Dativ' },
-            { id: 'verbs', label: 'Verben & Konjugation' },
-            { id: 'syntax', label: 'Satzstellung & Syntax' },
-            { id: 'questions', label: 'W-Fragen & Fragewörter' },
+            { id: 'articles', label: '1 · Artikel / Articles' },
+            { id: 'cases', label: '2 · Kasus / Cases' },
+            { id: 'verbs', label: '3 · Verben / Verbs' },
+            { id: 'syntax', label: '4 · Satz / Sentence' },
+            { id: 'questions', label: '5 · Fragen / Questions' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -75,6 +75,11 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
 
         {/* Tab Content */}
         <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 text-slate-800 text-xs sm:text-sm">
+          <div className="flex items-center gap-2 rounded-xl bg-indigo-50 border border-indigo-100 px-3 py-2 text-xs text-indigo-950">
+            <span className="font-extrabold">So lernst du:</span>
+            <span>Regel lesen → Beispiel sprechen → eigene Wörter einsetzen.</span>
+            <span className="ml-auto hidden sm:inline text-indigo-600 font-medium">Learn · say · use</span>
+          </div>
           {/* TAB 1: ARTICLES */}
           {activeTab === 'articles' && (
             <div className="space-y-4">
@@ -184,8 +189,8 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <h3 className="font-bold text-slate-950 text-sm">Welcher Kasus?</h3>
-                    <p className="text-xs text-slate-600 mt-1">Frage zuerst, dann wähle den Artikel.</p>
+                    <h3 className="font-bold text-slate-950 text-sm">Welcher Kasus? <span className="font-medium text-slate-500">Which case?</span></h3>
+                    <p className="text-xs text-slate-600 mt-1">Frage zuerst, dann wähle den Artikel. <span className="text-slate-500">Ask first, then choose the article.</span></p>
                   </div>
                   <AudioButton text="Der Mann gibt dem Kind den Ball." size="sm" />
                 </div>
@@ -201,19 +206,19 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
                     </tbody>
                   </table>
                 </div>
-                <p className="text-xs text-slate-700"><strong>Merksatz:</strong> Wer gibt? <span className="text-emerald-700 font-semibold">Der Mann</span>. Wem? <span className="text-amber-700 font-semibold">Dem Kind</span>. Wen/Was? <span className="text-indigo-700 font-semibold">Den Ball</span>.</p>
+                  <p className="text-xs text-slate-700"><strong>Merksatz / Memory:</strong> Wer gibt? <span className="text-emerald-700 font-semibold">Der Mann</span>. Wem? <span className="text-amber-700 font-semibold">Dem Kind</span>. Wen/Was? <span className="text-indigo-700 font-semibold">Den Ball</span>.</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-3">
                   <div className="flex items-center justify-between gap-2"><h3 className="font-bold text-indigo-950 text-sm">Akkusativ · Wen-Fall</h3><AudioButton text="Ich kaufe einen Apfel. Ich sehe den Mann." size="sm" /></div>
-                  <p className="text-xs text-indigo-900 leading-relaxed"><strong>Direktes Objekt:</strong> Wen oder was sehe, kaufe, brauche oder habe ich?</p>
+                  <p className="text-xs text-indigo-900 leading-relaxed"><strong>Direktes Objekt / direct object:</strong> Wen oder was sehe, kaufe, brauche oder habe ich?</p>
                   <div className="rounded-xl bg-white/85 border border-indigo-100 p-3 text-xs space-y-1"><p className="font-bold text-slate-900">Nur maskulin ändert sich:</p><p><span className="line-through text-slate-400">der</span> Mann → <strong className="text-indigo-700">den</strong> Mann</p><p><span className="line-through text-slate-400">ein</span> Mann → <strong className="text-indigo-700">einen</strong> Mann</p><p><span className="line-through text-slate-400">kein</span> Mann → <strong className="text-indigo-700">keinen</strong> Mann</p></div>
                   <p className="text-[11px] text-indigo-900"><strong>Verben:</strong> haben, brauchen, kaufen, essen, trinken, sehen, lesen, suchen, finden, besuchen</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
                   <div className="flex items-center justify-between gap-2"><h3 className="font-bold text-amber-950 text-sm">Dativ · Wem-Fall</h3><AudioButton text="Ich helfe dem Mann. Ich danke der Frau." size="sm" /></div>
-                  <p className="text-xs text-amber-900 leading-relaxed"><strong>Person / Empfänger:</strong> Wem helfe, danke, antworte oder gebe ich etwas?</p>
+                  <p className="text-xs text-amber-900 leading-relaxed"><strong>Person / receiver:</strong> Wem helfe, danke, antworte oder gebe ich etwas?</p>
                   <div className="rounded-xl bg-white/85 border border-amber-100 p-3 text-xs space-y-1"><p className="font-bold text-slate-900">Artikel im Dativ:</p><p>der → <strong className="text-amber-700">dem</strong> · die → <strong className="text-amber-700">der</strong> · das → <strong className="text-amber-700">dem</strong></p><p>Plural: die → <strong className="text-amber-700">den</strong> + oft <strong>-n</strong>: den Kindern</p></div>
                   <p className="text-[11px] text-amber-900"><strong>Verben:</strong> helfen, danken, gefallen, gehören, antworten, schmecken, fehlen, folgen</p>
                 </div>
@@ -228,7 +233,7 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
                 <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100"><h3 className="font-bold text-indigo-950 mb-2">Präpositionen + Akkusativ</h3><p className="font-mono text-indigo-800">durch · für · gegen · ohne · um</p><p className="mt-2 text-slate-700">Das Geschenk ist <strong>für den Mann</strong>.</p></div>
                 <div className="p-4 rounded-2xl bg-amber-50/50 border border-amber-100"><h3 className="font-bold text-amber-950 mb-2">Präpositionen + Dativ</h3><p className="font-mono text-amber-800">aus · bei · mit · nach · seit · von · zu</p><p className="mt-2 text-slate-700">Ich fahre <strong>mit dem Bus</strong>.</p></div>
               </div>
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950"><strong>Wechselpräpositionen:</strong> Wohin? = Akkusativ: <em>Ich gehe in die Schule.</em> · Wo? = Dativ: <em>Ich bin in der Schule.</em></div>
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950"><strong>Wechselpräpositionen / two-way prepositions:</strong> Wohin? <span className="text-slate-600">(where to?)</span> = Akkusativ: <em>Ich gehe in die Schule.</em> · Wo? <span className="text-slate-600">(where?)</span> = Dativ: <em>Ich bin in der Schule.</em></div>
             </div>
           )}
 
@@ -342,14 +347,14 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
           {activeTab === 'questions' && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
-                { w: 'Wer?', trans: 'من؟ (Who?)', ex: 'Wer ist das? — Das ist Herr Müller.' },
-                { w: 'Was?', trans: 'ماذا؟ (What?)', ex: 'Was machst du? — Ich koche.' },
-                { w: 'Wo?', trans: 'أين؟ (Where?)', ex: 'Wo wohnst du? — In Berlin.' },
-                { w: 'Woher?', trans: 'من أين؟ (Where from?)', ex: 'Woher kommst du? — Aus Ägypten.' },
-                { w: 'Wohin?', trans: 'إلى أين؟ (Where to?)', ex: 'Wohin gehst du? — Zum Supermarkt.' },
-                { w: 'Wie?', trans: 'كيف؟ (How?)', ex: 'Wie heißt du? — Wie geht es dir?' },
-                { w: 'Wann?', trans: 'متى؟ (When?)', ex: 'Wann beginnt der Kurs? — Um 9 Uhr.' },
-                { w: 'Warum?', trans: 'لماذا؟ (Why?)', ex: 'Warum lernst du Deutsch? — Für die Arbeit.' },
+                { w: 'Wer?', trans: 'Who?', ex: 'Wer ist das? — Das ist Herr Müller.' },
+                { w: 'Was?', trans: 'What?', ex: 'Was machst du? — Ich koche.' },
+                { w: 'Wo?', trans: 'Where?', ex: 'Wo wohnst du? — In Berlin.' },
+                { w: 'Woher?', trans: 'Where from?', ex: 'Woher kommst du? — Aus Ägypten.' },
+                { w: 'Wohin?', trans: 'Where to?', ex: 'Wohin gehst du? — Zum Supermarkt.' },
+                { w: 'Wie?', trans: 'How?', ex: 'Wie heißt du? — Wie geht es dir?' },
+                { w: 'Wann?', trans: 'When?', ex: 'Wann beginnt der Kurs? — Um 9 Uhr.' },
+                { w: 'Warum?', trans: 'Why?', ex: 'Warum lernst du Deutsch? — Für die Arbeit.' },
               ].map((item, i) => (
                 <div key={i} className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
                   <div className="flex items-center justify-between">

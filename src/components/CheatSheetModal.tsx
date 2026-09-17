@@ -181,45 +181,54 @@ export const CheatSheetModal: React.FC<CheatSheetModalProps> = ({
           {/* TAB 2: CASES */}
           {activeTab === 'cases' && (
             <div className="space-y-4">
-              <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-indigo-950 text-sm">
-                    Akkusativ (Direktes Objekt / Wen-Fall)
-                  </h3>
-                  <AudioButton text="Ich habe einen Apfel. Ich trinke den Kaffee." size="sm" />
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="font-bold text-slate-950 text-sm">Welcher Kasus?</h3>
+                    <p className="text-xs text-slate-600 mt-1">Frage zuerst, dann wähle den Artikel.</p>
+                  </div>
+                  <AudioButton text="Der Mann gibt dem Kind den Ball." size="sm" />
                 </div>
-                <p className="text-xs text-indigo-900 leading-relaxed font-medium">
-                  <strong>Wichtigste Merkregel:</strong> Nur maskuline Nomen verändern sich im Akkusativ!
-                  <br />
-                  <em>der Mann → den Mann</em> | <em>ein Mann → einen Mann</em> | <em>kein Mann → keinen Mann</em>
-                </p>
-                <div className="pt-2 text-xs text-slate-700 bg-white/80 p-3 rounded-xl border border-indigo-100">
-                  <p className="font-bold text-slate-900 mb-1">Typische Verben mit Akkusativ:</p>
-                  <span className="font-mono text-indigo-800">
-                    haben, brauchen, kaufen, trinken, essen, suchen, finden, sehen, lesen
-                  </span>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[520px] text-xs text-left">
+                    <thead className="text-slate-500 uppercase tracking-wide">
+                      <tr className="border-b border-slate-200"><th className="p-2">Kasus</th><th className="p-2">Frage</th><th className="p-2">Satzteil</th><th className="p-2">Beispiel</th></tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200">
+                      <tr><td className="p-2 font-bold text-emerald-700">Nominativ</td><td className="p-2 font-mono">Wer? Was?</td><td className="p-2">Subjekt</td><td className="p-2">Der Mann gibt …</td></tr>
+                      <tr className="bg-indigo-50/60"><td className="p-2 font-bold text-indigo-700">Akkusativ</td><td className="p-2 font-mono">Wen? Was?</td><td className="p-2">direktes Objekt</td><td className="p-2">… den Ball.</td></tr>
+                      <tr className="bg-amber-50/60"><td className="p-2 font-bold text-amber-700">Dativ</td><td className="p-2 font-mono">Wem?</td><td className="p-2">Empfänger / Person</td><td className="p-2">… dem Kind.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs text-slate-700"><strong>Merksatz:</strong> Wer gibt? <span className="text-emerald-700 font-semibold">Der Mann</span>. Wem? <span className="text-amber-700 font-semibold">Dem Kind</span>. Wen/Was? <span className="text-indigo-700 font-semibold">Den Ball</span>.</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-3">
+                  <div className="flex items-center justify-between gap-2"><h3 className="font-bold text-indigo-950 text-sm">Akkusativ · Wen-Fall</h3><AudioButton text="Ich kaufe einen Apfel. Ich sehe den Mann." size="sm" /></div>
+                  <p className="text-xs text-indigo-900 leading-relaxed"><strong>Direktes Objekt:</strong> Wen oder was sehe, kaufe, brauche oder habe ich?</p>
+                  <div className="rounded-xl bg-white/85 border border-indigo-100 p-3 text-xs space-y-1"><p className="font-bold text-slate-900">Nur maskulin ändert sich:</p><p><span className="line-through text-slate-400">der</span> Mann → <strong className="text-indigo-700">den</strong> Mann</p><p><span className="line-through text-slate-400">ein</span> Mann → <strong className="text-indigo-700">einen</strong> Mann</p><p><span className="line-through text-slate-400">kein</span> Mann → <strong className="text-indigo-700">keinen</strong> Mann</p></div>
+                  <p className="text-[11px] text-indigo-900"><strong>Verben:</strong> haben, brauchen, kaufen, essen, trinken, sehen, lesen, suchen, finden, besuchen</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+                  <div className="flex items-center justify-between gap-2"><h3 className="font-bold text-amber-950 text-sm">Dativ · Wem-Fall</h3><AudioButton text="Ich helfe dem Mann. Ich danke der Frau." size="sm" /></div>
+                  <p className="text-xs text-amber-900 leading-relaxed"><strong>Person / Empfänger:</strong> Wem helfe, danke, antworte oder gebe ich etwas?</p>
+                  <div className="rounded-xl bg-white/85 border border-amber-100 p-3 text-xs space-y-1"><p className="font-bold text-slate-900">Artikel im Dativ:</p><p>der → <strong className="text-amber-700">dem</strong> · die → <strong className="text-amber-700">der</strong> · das → <strong className="text-amber-700">dem</strong></p><p>Plural: die → <strong className="text-amber-700">den</strong> + oft <strong>-n</strong>: den Kindern</p></div>
+                  <p className="text-[11px] text-amber-900"><strong>Verben:</strong> helfen, danken, gefallen, gehören, antworten, schmecken, fehlen, folgen</p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-amber-950 text-sm">
-                    Dativ (Indirektes Objekt / Wem-Fall)
-                  </h3>
-                  <AudioButton text="Ich helfe dem Mann. Wie geht es dir?" size="sm" />
-                </div>
-                <p className="text-xs text-amber-900 leading-relaxed font-medium">
-                  Im Dativ verändern sich alle Artikel:
-                  <br />
-                  <em>der / das → dem</em> | <em>die → der</em> | <em>Plural → den (+ -n am Nomen)</em>
-                </p>
-                <div className="pt-2 text-xs text-slate-700 bg-white/80 p-3 rounded-xl border border-amber-100">
-                  <p className="font-bold text-slate-900 mb-1">Typische Verben mit Dativ:</p>
-                  <span className="font-mono text-amber-800">
-                    helfen, danken, gefallen, gehören, antworten, gratulieren, schmecken
-                  </span>
-                </div>
+              <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-3">
+                <h3 className="font-bold text-slate-900 text-sm">Artikel schnell nachschlagen</h3>
+                <div className="overflow-x-auto"><table className="w-full min-w-[560px] text-xs text-center"><thead><tr className="text-slate-500 border-b border-slate-200"><th className="p-2 text-left">Artikel</th><th className="p-2">m</th><th className="p-2">f</th><th className="p-2">n</th><th className="p-2">Plural</th></tr></thead><tbody className="divide-y divide-slate-100"><tr><td className="p-2 text-left font-bold text-emerald-700">Nom.</td><td>der / ein</td><td>die / eine</td><td>das / ein</td><td>die / —</td></tr><tr className="bg-indigo-50"><td className="p-2 text-left font-bold text-indigo-700">Akk.</td><td className="font-bold">den / einen</td><td>die / eine</td><td>das / ein</td><td>die / —</td></tr><tr className="bg-amber-50"><td className="p-2 text-left font-bold text-amber-700">Dat.</td><td>dem / einem</td><td>der / einer</td><td>dem / einem</td><td className="font-bold">den / — (+n)</td></tr></tbody></table></div>
               </div>
+
+              <div className="grid md:grid-cols-2 gap-4 text-xs">
+                <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100"><h3 className="font-bold text-indigo-950 mb-2">Präpositionen + Akkusativ</h3><p className="font-mono text-indigo-800">durch · für · gegen · ohne · um</p><p className="mt-2 text-slate-700">Das Geschenk ist <strong>für den Mann</strong>.</p></div>
+                <div className="p-4 rounded-2xl bg-amber-50/50 border border-amber-100"><h3 className="font-bold text-amber-950 mb-2">Präpositionen + Dativ</h3><p className="font-mono text-amber-800">aus · bei · mit · nach · seit · von · zu</p><p className="mt-2 text-slate-700">Ich fahre <strong>mit dem Bus</strong>.</p></div>
+              </div>
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950"><strong>Wechselpräpositionen:</strong> Wohin? = Akkusativ: <em>Ich gehe in die Schule.</em> · Wo? = Dativ: <em>Ich bin in der Schule.</em></div>
             </div>
           )}
 

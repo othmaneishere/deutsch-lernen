@@ -152,18 +152,12 @@ export const speakGerman = (text: string, onEnd?: () => void): boolean => {
 
   notifyListeners(true, cleanText);
 
-  // Mobile Safari and Chrome may reject a second playback attempt when a
-  // network TTS request fails after the original tap. Start native speech
-  // directly on mobile so playback stays inside the user gesture.
-  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(window.navigator.userAgent);
-  if (isMobile) {
-    return fallbackWebSpeech(cleanText, onEnd);
-  }
-
   // Strategy 1: External High-Definition Neural German Audio via Server Proxy
   try {
     const audioUrl = `/api/tts?text=${encodeURIComponent(cleanText)}&voice=${encodeURIComponent(globalVoice)}`;
     const audio = new Audio(audioUrl);
+    audio.preload = 'auto';
+    audio.setAttribute('playsinline', 'true');
     audio.playbackRate = globalSpeed;
     activeAudio = audio;
 

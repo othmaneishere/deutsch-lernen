@@ -10,6 +10,7 @@ import { CoursePage, LanguageMode } from '../types';
 import { moduleScenes, ModuleVisualScene } from '../utils/moduleAssets';
 import { AudioButton } from './AudioButton';
 import { CourseUnit, getUnitForChapter } from '../data/courseUnits';
+import { a2Scenes, a2Units } from '../data/a2CourseData';
 
 interface ModuleHeroCardProps {
   currentPage: CoursePage;
@@ -27,8 +28,9 @@ export const ModuleHeroCard: React.FC<ModuleHeroCardProps> = ({
   unitOverride,
   scenesOverride,
 }) => {
-  const scene: ModuleVisualScene = scenesOverride?.[currentPage.chapterNumber] || moduleScenes[currentPage.chapterNumber] || moduleScenes[1];
-  const unit = unitOverride || getUnitForChapter(currentPage.chapterNumber);
+  const isA2Page = currentPage.chapterTitleDe.startsWith('A2 ');
+  const scene: ModuleVisualScene = scenesOverride?.[currentPage.chapterNumber] || (isA2Page ? a2Scenes[currentPage.chapterNumber] : moduleScenes[currentPage.chapterNumber]) || moduleScenes[1];
+  const unit = unitOverride || (isA2Page ? a2Units.find((item) => item.chapterNumbers.includes(currentPage.chapterNumber)) : getUnitForChapter(currentPage.chapterNumber)) || getUnitForChapter(currentPage.chapterNumber);
 
   let title = currentPage.pageTitleDe;
   let scenario = scene.scenarioDe;

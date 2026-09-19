@@ -26,7 +26,7 @@ export const A2CoursePage: React.FC = () => {
   const [showCheatSheet, setShowCheatSheet] = useState(false);
   const [showAudioSettings, setShowAudioSettings] = useState(false);
   const [audioSpeed, setAudioSpeed] = useState(getPlaybackSpeed());
-  const currentPage = useMemo(() => a2Pages.find((page) => page.pageNumber === pageNumber) || a2Pages[0], [pageNumber]);
+const currentPage = useMemo(() => { const page = a2Pages.find((item) => item.pageNumber === pageNumber) || a2Pages[0]; return { ...page, id: page.id + 200, chapterTitleDe: `A2 ${page.chapterTitleDe}` }; }, [pageNumber]);
   useEffect(() => { localStorage.setItem('deutschklar_a2_page', String(pageNumber)); setFilter('all'); window.scrollTo({ top: 0, behavior: 'smooth' }); }, [pageNumber]);
   useEffect(() => subscribeSpeechState((state) => setAudioSpeed(state.speed)), []);
   const showSection = (type: string) => filter === 'all' || (filter === 'vocab' && type === 'vocabulary') || (filter === 'grammar' && type === 'rule_card') || (filter === 'dialogue' && type === 'dialogue');

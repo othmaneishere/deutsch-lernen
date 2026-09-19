@@ -4,6 +4,7 @@ import { pages5to8 } from './pages5to8';
 import { pages9to15 } from './pages9to15';
 import { pages16to19 } from './pages16to19';
 import { pages20to22 } from './pages20to22';
+import { pages23to24 } from './pages23to24';
 
 export const allPages: CoursePage[] = [
   ...pages1to4,
@@ -11,6 +12,7 @@ export const allPages: CoursePage[] = [
   ...pages9to15,
   ...pages16to19,
   ...pages20to22,
+  ...pages23to24,
 ];
 
 export const getPageByNumber = (num: number): CoursePage | undefined => {

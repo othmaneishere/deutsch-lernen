@@ -152,6 +152,21 @@ export const courseUnits: CourseUnit[] = [
       ring: 'ring-cyan-400',
     },
   },
+  {
+    id: 6,
+    number: 6,
+    level: 'A1.2',
+    titleDe: 'Einheit 6: Alltag selbstständig',
+    titleAr: 'الوحدة 6: الاستقلال في الحياة اليومية',
+    titleEn: 'Unit 6: Everyday Independence',
+    titleFr: 'Unité 6 : Autonomie au quotidien',
+    descDe: 'Post, Pakete, Telefonate und höfliche Hilfe im Alltag.',
+    descAr: 'البريد والطرود والمكالمات وطلب المساعدة بأدب.',
+    descEn: 'Post, packages, phone calls, and asking for help politely.',
+    descFr: 'Poste, colis, appels et demandes d’aide polies.',
+    chapterNumbers: [19],
+    color: { name: 'slate', gradient: 'from-slate-600 to-indigo-600', bgBadge: 'bg-slate-50 border-slate-200 text-slate-700', textBadge: 'text-slate-700', borderAccent: 'border-slate-500', lightBg: 'bg-slate-50/60', activeTab: 'bg-slate-700 text-white shadow-slate-200 shadow-sm', dotColor: 'bg-slate-500', ring: 'ring-slate-400' },
+  },
 ];
 
 export const getUnitForChapter = (chapterNumber: number): CourseUnit => {

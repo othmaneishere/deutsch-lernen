@@ -196,4 +196,9 @@ export const chaptersOverview: ChapterOverview[] = [
     titleDe: 'Kapitel 18 – Pläne & Einladungen', titleAr: 'الفصل 18 – الخطط والدعوات', titleEn: 'Chapter 18 – Plans & Invitations', titleFr: 'Chapitre 18 – Projets et invitations',
     topicsDe: 'Einladungen · Verabredungen · möchten · Uhrzeit', topicsAr: 'الدعوات · المواعيد · möchten · الوقت', topicsEn: 'Invitations · Arrangements · möchten · Time', topicsFr: 'Invitations · Rendez-vous · möchten · Heure', startPage: 22,
   },
+  {
+    number: 19,
+    titleDe: 'Kapitel 19 – Post, Pakete & Telefon', titleAr: 'الفصل 19 – البريد والطرود والهاتف', titleEn: 'Chapter 19 – Post, Packages & Phone Calls', titleFr: 'Chapitre 19 – Poste, colis et téléphone',
+    topicsDe: 'Pakete · Ausweis · Telefonieren · Nachrichten', topicsAr: 'الطرود · بطاقة الهوية · الهاتف · الرسائل', topicsEn: 'Packages · ID cards · Phone calls · Messages', topicsFr: 'Colis · Pièces d’identité · Téléphone · Messages', startPage: 23,
+  },
 ];

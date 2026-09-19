@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BookMarked, BookOpen, Library, Menu, X } from 'lucide-react';
+import { BookMarked, BookOpen, Library, Menu, X, Languages } from 'lucide-react';
 
-interface PrimaryNavigationProps { active?: 'course' | 'stories' | 'vocabulary'; className?: string; }
+interface PrimaryNavigationProps { active?: 'course' | 'stories' | 'vocabulary' | 'grammar'; className?: string; }
 
 export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({ active, className = '' }) => {
   const [open, setOpen] = useState(false);
@@ -9,6 +9,7 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({ active, cl
     { key: 'course' as const, href: '/kurs', label: 'A1 Lehrbuch', Icon: BookOpen },
     { key: 'stories' as const, href: '/geschichten', label: 'Hörgeschichten', Icon: BookMarked },
     { key: 'vocabulary' as const, href: '/wortschatz', label: 'Wortschatz', Icon: Library },
+    { key: 'grammar' as const, href: '/grammatik', label: 'Grammatik', Icon: Languages },
   ];
   const linkClass = (key: PrimaryNavigationProps['active']) => `inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition ${active === key ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-950'}`;
   return <div className={`relative ${className}`}>

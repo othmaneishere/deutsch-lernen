@@ -22,6 +22,7 @@ import { LandingPage } from './components/LandingPage';
 import { A2ComingSoonModal } from './components/A2ComingSoonModal';
 import { A2CoursePage } from './components/A2CoursePage';
 import { VocabularyPage } from './components/VocabularyPage';
+import { GrammarPage } from './components/GrammarPage';
 import { getPlaybackSpeed, subscribeSpeechState } from './utils/speech';
 
 export function App() {
@@ -190,6 +191,10 @@ export function App() {
 
   if (window.location.pathname.startsWith('/wortschatz')) {
     return <VocabularyPage languageMode={languageMode} />;
+  }
+
+  if (window.location.pathname.startsWith('/grammatik')) {
+    return <GrammarPage />;
   }
 
   if (activeView === 'stories') {

@@ -9,22 +9,26 @@ import {
 import { CoursePage, LanguageMode } from '../types';
 import { moduleScenes, ModuleVisualScene } from '../utils/moduleAssets';
 import { AudioButton } from './AudioButton';
-import { getUnitForChapter } from '../data/courseUnits';
+import { CourseUnit, getUnitForChapter } from '../data/courseUnits';
 
 interface ModuleHeroCardProps {
   currentPage: CoursePage;
   languageMode: LanguageMode;
   onSelectFilter: (filter: any) => void;
   isCompact?: boolean;
+  unitOverride?: CourseUnit;
+  scenesOverride?: Record<number, ModuleVisualScene>;
 }
 
 export const ModuleHeroCard: React.FC<ModuleHeroCardProps> = ({
   currentPage,
   languageMode,
   onSelectFilter,
+  unitOverride,
+  scenesOverride,
 }) => {
-  const scene: ModuleVisualScene = moduleScenes[currentPage.chapterNumber] || moduleScenes[1];
-  const unit = getUnitForChapter(currentPage.chapterNumber);
+  const scene: ModuleVisualScene = scenesOverride?.[currentPage.chapterNumber] || moduleScenes[currentPage.chapterNumber] || moduleScenes[1];
+  const unit = unitOverride || getUnitForChapter(currentPage.chapterNumber);
 
   let title = currentPage.pageTitleDe;
   let scenario = scene.scenarioDe;

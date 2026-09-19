@@ -3,9 +3,9 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
 } from 'lucide-react';
-import { CoursePage, LanguageMode } from '../types';
-import { getUnitForChapter, getUnitTitle } from '../data/courseUnits';
-import { chaptersOverview } from '../data/chaptersData';
+import { ChapterOverview, CoursePage, LanguageMode } from '../types';
+import { CourseUnit, getUnitForChapter, getUnitTitle } from '../data/courseUnits';
+import { chaptersOverview as defaultChapters } from '../data/chaptersData';
 import { PrimaryNavigation } from './PrimaryNavigation';
 
 interface DashboardNavbarProps {
@@ -17,6 +17,8 @@ interface DashboardNavbarProps {
   activeView: 'course' | 'stories';
   onSelectView: (view: 'course' | 'stories') => void;
   onOpenLevelComingSoon?: (level: 'A2' | 'B1') => void;
+  courseUnitsOverride?: CourseUnit[];
+  chaptersOverride?: ChapterOverview[];
 }
 
 export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
@@ -28,9 +30,13 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
   activeView,
   onSelectView,
   onOpenLevelComingSoon,
+  courseUnitsOverride,
+  chaptersOverride,
 }) => {
-  const currentUnit = getUnitForChapter(currentPage.chapterNumber);
-  const chapterInfo = chaptersOverview.find((c) => c.number === currentPage.chapterNumber);
+  const currentUnit = courseUnitsOverride
+    ? courseUnitsOverride.find((unit) => unit.chapterNumbers.includes(currentPage.chapterNumber)) || courseUnitsOverride[0]
+    : getUnitForChapter(currentPage.chapterNumber);
+  const chapterInfo = (chaptersOverride || defaultChapters).find((c) => c.number === currentPage.chapterNumber);
 
   return (
     <header

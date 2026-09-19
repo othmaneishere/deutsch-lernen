@@ -3,7 +3,7 @@ import { LanguageMode } from '../types';
 export interface CourseUnit {
   id: number;
   number: number;
-  level: 'A1.1' | 'A1.2';
+  level: 'A1.1' | 'A1.2' | 'A2';
   titleDe: string;
   titleAr: string;
   titleEn: string;

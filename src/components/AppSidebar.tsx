@@ -11,12 +11,12 @@ import {
   Gauge,
   Sliders,
 } from 'lucide-react';
-import { LanguageMode } from '../types';
-import { courseUnits } from '../data/courseUnits';
-import { chaptersOverview } from '../data/chaptersData';
-import { allPages } from '../data/pagesData';
+import { ChapterOverview, CoursePage, LanguageMode } from '../types';
+import { CourseUnit, courseUnits } from '../data/courseUnits';
+import { chaptersOverview as defaultChapters } from '../data/chaptersData';
+import { allPages as defaultPages } from '../data/pagesData';
 import { getPlaybackSpeed, setPlaybackSpeed } from '../utils/speech';
-import { moduleScenes } from '../utils/moduleAssets';
+import { ModuleVisualScene, moduleScenes as defaultScenes } from '../utils/moduleAssets';
 
 interface AppSidebarProps {
   isOpen: boolean;
@@ -37,6 +37,10 @@ interface AppSidebarProps {
   onToggleTranslations?: () => void;
   audioSpeed?: number;
   onSpeedChange?: (speed: number) => void;
+  courseUnitsOverride?: CourseUnit[];
+  chaptersOverride?: ChapterOverview[];
+  pagesOverride?: CoursePage[];
+  scenesOverride?: Record<number, ModuleVisualScene>;
 }
 
 export const AppSidebar: React.FC<AppSidebarProps> = ({
@@ -58,7 +62,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   onToggleTranslations,
   audioSpeed = 1.0,
   onSpeedChange,
+  courseUnitsOverride,
+  chaptersOverride,
+  pagesOverride,
+  scenesOverride,
 }) => {
+  const visibleUnits = courseUnitsOverride || courseUnits;
+  const visibleChapters = chaptersOverride || defaultChapters;
+  const visiblePages = pagesOverride || defaultPages;
+  const visibleScenes = scenesOverride || defaultScenes;
   const [openUnits, setOpenUnits] = useState<{ [unitId: number]: boolean }>({
     1: true,
     2: true,
@@ -140,11 +152,11 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               Kapitelübersicht
             </span>
             <span className="text-[10px] font-bold text-slate-500">
-              {chaptersOverview.length} Kapitel
+              {visibleChapters.length} Kapitel
             </span>
           </div>
 
-          {courseUnits.map((unit) => {
+          {visibleUnits.map((unit) => {
             const isExpanded = openUnits[unit.id] ?? false;
             const containsActiveChapter = unit.chapterNumbers.includes(currentChapterNumber);
 
@@ -185,12 +197,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                 {isExpanded && (
                   <div className="p-1.5 space-y-1 bg-white">
                     {unit.chapterNumbers.map((chNum) => {
-                      const chData = chaptersOverview.find((c) => c.number === chNum);
+                      const chData = visibleChapters.find((c) => c.number === chNum);
                       if (!chData) return null;
-                      const chapterPages = allPages.filter((page) => page.chapterNumber === chNum);
+                      const chapterPages = visiblePages.filter((page) => page.chapterNumber === chNum);
                       return chapterPages.map((page) => {
                         const isActive = page.pageNumber === currentPageNumber;
-                        const scene = moduleScenes[chNum];
+                        const scene = visibleScenes[chNum];
                         return (
                           <button
                             key={page.pageNumber}

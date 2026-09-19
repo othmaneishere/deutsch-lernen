@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { CoursePage, LanguageMode, SectionFilterType } from '../types';
 import { a2Chapters, a2ExtraWords, a2Pages, a2Scenes, a2Units } from '../data/a2CourseData';
+import { a2LessonEnhancements } from '../data/a2LessonEnhancements';
 import { AppSidebar } from './AppSidebar';
 import { DashboardNavbar } from './DashboardNavbar';
 import { ModuleHeroCard } from './ModuleHeroCard';
@@ -26,7 +27,7 @@ export const A2CoursePage: React.FC = () => {
   const [showCheatSheet, setShowCheatSheet] = useState(false);
   const [showAudioSettings, setShowAudioSettings] = useState(false);
   const [audioSpeed, setAudioSpeed] = useState(getPlaybackSpeed());
-const currentPage = useMemo(() => { const page = a2Pages.find((item) => item.pageNumber === pageNumber) || a2Pages[0]; const extras = a2ExtraWords[page.chapterNumber - 1] || []; const enrichedSections = page.sections.map((section) => section.type === 'vocabulary' ? { ...section, vocabItems: [...(section.vocabItems || []), ...extras.map((word) => { const [de, en] = word.split('|'); return { de, en, ar: en, fr: en }; })] } : section); return { ...page, id: page.id + 200, chapterTitleDe: `A2 ${page.chapterTitleDe}`, sections: enrichedSections }; }, [pageNumber]);
+const currentPage = useMemo(() => { const page = a2Pages.find((item) => item.pageNumber === pageNumber) || a2Pages[0]; const extras = a2ExtraWords[page.chapterNumber - 1] || []; const lesson = a2LessonEnhancements[page.chapterNumber - 1]; const enrichedSections = page.sections.map((section) => section.type === 'vocabulary' ? { ...section, vocabItems: [...(section.vocabItems || []), ...extras.map((word) => { const [de, en] = word.split('|'); return { de, en, ar: en, fr: en }; })] } : section.type === 'rule_card' && lesson ? { ...section, rulePoints: lesson.rule } : section); const dialogue = lesson ? { id: `a2-dialogue-${page.chapterNumber}`, titleDe: 'Dialog: Im echten Leben', titleAr: 'حوار: في الحياة اليومية', titleEn: 'Dialogue: In real life', titleFr: 'Dialogue : Dans la vie réelle', type: 'dialogue', descriptionDe: 'Höre den Dialog und sprich die Sätze laut nach.', descriptionAr: 'استمع إلى الحوار وردد الجمل بصوت عالٍ.', descriptionEn: 'Listen to the dialogue and repeat the sentences aloud.', descriptionFr: 'Écoutez le dialogue et répétez les phrases à voix haute.', dialogueLines: lesson.dialogue } : null; return { ...page, id: page.id + 200, chapterTitleDe: `A2 ${page.chapterTitleDe}`, sections: dialogue ? [...enrichedSections, dialogue] : enrichedSections, exercises: lesson ? [...page.exercises, ...lesson.exercises] : page.exercises }; }, [pageNumber]);
   useEffect(() => { localStorage.setItem('deutschklar_a2_page', String(pageNumber)); setFilter('all'); window.scrollTo({ top: 0, behavior: 'smooth' }); }, [pageNumber]);
   useEffect(() => subscribeSpeechState((state) => setAudioSpeed(state.speed)), []);
   const showSection = (type: string) => filter === 'all' || (filter === 'vocab' && type === 'vocabulary') || (filter === 'grammar' && type === 'rule_card') || (filter === 'dialogue' && type === 'dialogue');

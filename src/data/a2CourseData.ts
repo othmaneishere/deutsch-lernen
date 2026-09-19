@@ -5,6 +5,23 @@ import { ModuleVisualScene } from '../utils/moduleAssets';
 
 const empty = (de: string, en: string) => ({ de, ar: de, en, fr: en });
 const images = ['/images/german_professions_1789293830175.jpg', '/images/german_appointments_banner_1789294929967.jpg', '/images/german_city_transit_1789293515695.jpg', '/images/german_doctor_health_1789293897419.jpg', '/images/german_home_living_1789293528851.jpg', '/images/german_travel_memories_1789294943615.jpg', '/images/german_market_scene_1789293564702.jpg', '/images/german_exam_review_1789294956634.jpg'];
+export const a2ExtraWords: string[][] = [
+  ['die Ansicht|view', 'überzeugt sein|be convinced', 'allerdings|however', 'deshalb|therefore', 'beispielsweise|for example', 'die Erfahrung|experience', 'diskutieren|discuss', 'der Vorschlag|suggestion', 'zustimmen|agree', 'ablehnen|reject'],
+  ['die Besprechung|meeting', 'die Frist|deadline', 'planen|plan', 'organisieren|organise', 'die Verantwortung|responsibility', 'dringend|urgent', 'verfügbar|available', 'der Kollege|colleague', 'die Lösung|solution', 'sich kümmern|take care'],
+  ['die Haltestelle|stop', 'die Fahrkarte|ticket', 'die Richtung|direction', 'entfernt|far away', 'erreichen|reach', 'die Verspätung|delay', 'warten|wait', 'aussteigen|get off', 'einsteigen|get on', 'der Stadtplan|city map'],
+  ['die Untersuchung|examination', 'die Behandlung|treatment', 'verschreiben|prescribe', 'die Tablette|tablet', 'gesund|healthy', 'krank|ill', 'weh tun|hurt', 'der Termin|appointment', 'die Apotheke|pharmacy', 'vermeiden|avoid'],
+  ['der Nachbar|neighbor', 'die Nachbarin|neighbor', 'der Lärm|noise', 'die Reparatur|repair', 'kaputt|broken', 'der Mietvertrag|rental contract', 'umziehen|move house', 'sich beschweren|complain', 'die Hausordnung|house rules', 'bequem|comfortable'],
+  ['die Unterkunft|accommodation', 'buchen|book', 'die Abfahrt|departure', 'die Ankunft|arrival', 'der Ausflug|excursion', 'die Landschaft|landscape', 'entdecken|discover', 'übernachten|stay overnight', 'die Erinnerung|memory', 'empfehlen|recommend'],
+  ['die Größe|size', 'anprobieren|try on', 'passen|fit', 'das Angebot|offer', 'der Rabatt|discount', 'bezahlen|pay', 'zurückgeben|return', 'die Kasse|checkout', 'die Qualität|quality', 'vergleichen|compare'],
+  ['der Artikel|article', 'die Überschrift|headline', 'die Quelle|source', 'verstehen|understand', 'notieren|take notes', 'wichtig|important', 'unbekannt|unknown', 'nachschlagen|look up', 'die Erklärung|explanation', 'prüfen|check'],
+  ['der Klimaschutz|climate protection', 'verbrauchen|consume', 'die Energie|energy', 'die Heizung|heating', 'recyceln|recycle', 'öffentliche Verkehrsmittel|public transport', 'wiederverwenden|reuse', 'der Müll|waste', 'bewusst|conscious', 'verändern|change'],
+  ['die Einladung|invitation', 'die Gäste|guests', 'vorbereiten|prepare', 'die Musik|music', 'mitfeiern|celebrate along', 'absagen|cancel', 'rechtzeitig|in time', 'die Überraschung|surprise', 'der Kuchen|cake', 'sich treffen|meet'],
+  ['glücklich|happy', 'traurig|sad', 'wütend|angry', 'stolz|proud', 'ängstlich|afraid', 'sich erinnern|remember', 'vermissen|miss', 'ehrlich|honest', 'geduldig|patient', 'gemeinsam|together'],
+  ['der Antrag|application', 'das Amt|public office', 'der Ausweis|identity card', 'die Unterschrift|signature', 'die Anmeldung|registration', 'gültig|valid', 'die Kopie|copy', 'vorlegen|present', 'der Schalter|counter', 'wartenummer|queue number'],
+  ['das Konzert|concert', 'der Verein|club', 'trainieren|train', 'fotografieren|photograph', 'wandern|hike', 'kochen|cook', 'sich entspannen|relax', 'regelmäßig|regularly', 'die Freizeit|free time', 'interessiert|interested'],
+  ['die Mitteilung|notice', 'die Information|information', 'angeblich|allegedly', 'nämlich|namely', 'vermutlich|presumably', 'der Bericht|report', 'die Frage|question', 'antworten|answer', 'weitergeben|pass on', 'genau|exactly'],
+  ['das Lernziel|learning goal', 'die Wiederholung|revision', 'sich verbessern|improve', 'die Aussprache|pronunciation', 'der Fehler|mistake', 'richtig|correct', 'selbstbewusst|confident', 'die Prüfung|exam', 'üben|practise', 'erfolgreich|successful'],
+];
 const topics: [string, string, string[], string, string][] = [
   ['Meinungen ausdrücken', 'Opinions and reasons', ['zustimmen|agree', 'meinen|think', 'der Grund|reason', 'wirklich|really'], 'weil + Verb am Ende: Ich bleibe zu Hause, weil ich krank bin.', 'Ich glaube, dass Deutsch wichtig ist.'],
   ['Arbeit und Pläne', 'Work, tasks and priorities', ['die Aufgabe|task', 'erledigen|complete', 'verschieben|postpone', 'pünktlich|on time'], 'Modalverb + Infinitiv: Ich muss heute länger arbeiten.', 'Wir müssen den Termin verschieben.'],
